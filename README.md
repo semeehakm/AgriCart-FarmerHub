@@ -1,97 +1,114 @@
-🌾 FarmersHub – Full Stack Django Project
+# 🌾 FarmersHub – Full Stack Django Project
+# Developed by Semeeha KM
 
-Developed by: Semeeha KM
+# 📌 Project Overview
+FarmersHub is a full-stack web application built using the Django framework. 
+It connects farmers, sellers, customers, and cargo teams into a single platform.
 
-📌 Project Overview
+The system allows product listing, order management, and delivery tracking 
+with secure role-based access.
 
-FarmersHub is a full-stack web application built using the Django framework. It connects farmers, sellers, customers, and cargo teams into a unified platform for managing agricultural product sales and deliveries.
+# 🎯 Objectives
+## Provide a platform for farmers and sellers to sell products
+## Enable users to browse and purchase products easily
+## Implement a structured delivery system using cargo team
+## Ensure secure role-based authentication
+## Improve transparency in order tracking
 
-The system enables product listing, order management, and real-time delivery tracking with secure role-based access.
+# ⚙️ Technologies Used
+## Frontend
+### HTML
+### CSS
+### JavaScript
 
-🎯 Objectives
-Provide a platform for farmers and sellers to market products
-Enable users to browse and purchase easily
-Implement a structured delivery system using a cargo team
-Ensure secure, role-based authentication
-Improve transparency in order tracking
-⚙️ Tech Stack
-Layer	Technology
-Frontend	HTML, CSS, JavaScript
-Backend	Python (Django)
-Database	SQLite
-Version Control	Git & GitHub
-👥 System Modules
-🔹 Admin Module
-Manage all users (farmers, sellers, cargo team)
-Approve/reject registrations
-Monitor orders and system activity
-Assign roles and permissions
-🔹 Farmer / Seller Module
-Register and login
-Add, update, delete products
-View customer orders
-Manage inventory
-🔹 User (Customer) Module
-Register and login
-Browse and search products
-Add to cart and place orders
-Track order status
-🚚 Cargo Team Dashboard
+## Backend
+### Python
+### Django Framework
 
-The Cargo Dashboard is a restricted module designed specifically for delivery personnel.
+## Database
+### SQLite
 
-🔐 Access Control
-Created and managed by Admin
-Given staff access only
-Limited permissions (no admin control)
-📊 Features
-📦 View Assigned Orders
-Access all delivery orders
-Includes product details, customer info, and address
-🔄 Update Delivery Status
+## Version Control
+### Git and GitHub
 
-Cargo team can update status such as:
+# 👥 System Modules
 
-Pending
-Shipped
-Out for Delivery
-Delivered
+## Admin Module
+### Manage users and roles
+### Approve or reject registrations
+### Monitor orders and system activity
+### Assign permissions
 
-⚠️ Note: Cargo team can only update status and cannot modify other data
+## Farmer / Seller Module
+### Register and login
+### Add, update, delete products
+### View customer orders
+### Manage inventory
 
-📍 Delivery Tracking
-Status updates reflect in user dashboard
-Enables real-time tracking
-🧾 Simple Dashboard UI
-Clean and minimal interface
-Focused only on delivery tasks
-🧩 Key Features
-Role-based authentication system
-Product management system
-Order and booking management
-Dedicated cargo delivery module
-Search and filtering functionality
-Clean and responsive dashboard
-🔄 System Workflow
-User → Browse Products → Place Order  
-        ↓  
-Seller → Process Order  
-        ↓  
-Cargo Team → Update Delivery Status  
-        ↓  
-User → Track Order → Delivery Completed
-🚀 Future Enhancements
-AI-based route optimization
-Chatbot support
-Online payment integration
-Notification system (SMS/Email)
-Advanced analytics dashboard
-Mobile application
-📊 Project Highlights
-Scalable and modular architecture
-User-friendly interface
-Secure role-based system
-Real-world practical application
-📞 Contact
-📧 Email: semeehakm72@gmail.com
-📱 Phone: 9447259734
+## User Module
+### Register and login
+### Browse products
+### Add to cart and place orders
+### Track order status
+
+# 🚚 Cargo Team Dashboard
+
+## Access Control
+### Created and managed by admin
+### Given staff access only
+### Limited permissions
+
+## Features
+
+### View Assigned Orders
+#### Access delivery orders with product and customer details
+
+### Update Delivery Status
+#### Pending
+#### Shipped
+#### Out for Delivery
+#### Delivered
+
+### Note
+#### Cargo team can only update delivery status
+#### Cannot modify product, user, or payment data
+
+### Delivery Tracking
+#### Status updates visible to users
+#### Enables real-time tracking
+
+### Dashboard Interface
+#### Simple and clean design
+#### Focused on delivery operations only
+
+# 🧩 Key Features
+## Role-based authentication
+## Product management system
+## Order and booking system
+## Delivery tracking system
+## Search and filter functionality
+## Clean dashboard UI
+
+# 🔄 System Workflow
+## User browses products
+## User places order
+## Seller processes order
+## Cargo team updates delivery status
+## User tracks order until delivery
+
+# 🚀 Future Enhancements
+## AI-based route optimization
+## Chatbot support
+## Online payment integration
+## Notification system
+## Mobile application support
+
+# 📊 Project Highlights
+## Modular architecture
+## User-friendly interface
+## Secure system design
+## Real-world application
+
+# 📞 Contact
+## Email: semeehakm72@gmail.com
+## Phone: 9447259734
