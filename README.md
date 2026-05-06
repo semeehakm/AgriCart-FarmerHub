@@ -17,46 +17,46 @@ Improve transparency in order tracking
 
 ## ⚙️ Technologies Used
 ### Frontend
- HTML
- CSS
- JavaScript
+- HTML
+- CSS
+- JavaScript
 
 ## Backend
- Python
- Django Framework
+- Python
+- Django Framework
 
 ## Database
- SQLite
+- SQLite
 
 ## Version Control
- Git and GitHub
+- Git and GitHub
 
 # 👥 System Modules
 
 ## Admin Module
- Manage users and roles
- Approve or reject registrations
- Monitor orders and system activity
- Assign permissions
+- Manage users and roles
+- Approve or reject registrations
+- Monitor orders and system activity
+- Assign permissions
 
 ## Farmer / Seller Module
- Register and login
- Add, update, delete products
- View customer orders
- Manage inventory
+- Register and login
+- Add, update, delete products
+- View customer orders
+- Manage inventory
 
 ## User Module
- Register and login
- Browse products
- Add to cart and place orders
- Track order status
+- Register and login
+- Browse products
+- Add to cart and place orders
+- Track order status
 
 # 🚚 Cargo Team Dashboard
 
 ## Access Control
- Created and managed by admin
- Given staff access only
- Limited permissions
+- Created and managed by admin
+- Given staff access only
+- Limited permissions
 
 ## Features
 
