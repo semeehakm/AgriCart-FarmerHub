@@ -1,171 +1,149 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FarmersHub - Project Documentation</title>
+🌾 FarmersHub – Project Documentation
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #f5f7fa;
-            color: #333;
-        }
+Developed by: Semeeha KM
 
-        header {
-            background-color: #2c7a7b;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
+📌 Project Overview
 
-        section {
-            padding: 30px;
-            margin: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
+FarmersHub is a full-stack web application developed using the Django framework. The system is designed to connect farmers, sellers, customers, and delivery personnel (cargo team) within a single digital platform.
 
-        h2 {
-            color: #2c7a7b;
-        }
+The application streamlines the process of product listing, ordering, and delivery tracking while ensuring secure, role-based access for different types of users. It aims to reduce dependency on intermediaries and improve efficiency in agricultural product distribution.
 
-        ul {
-            line-height: 1.8;
-        }
+🎯 Objectives
 
-        footer {
-            text-align: center;
-            padding: 15px;
-            background-color: #2c7a7b;
-            color: white;
-        }
-    </style>
-</head>
+The primary objectives of the FarmersHub system are:
 
-<body>
+To provide farmers and sellers with a platform to showcase and sell their products
+To allow users to easily browse and purchase agricultural goods
+To implement a structured delivery system using a dedicated cargo team
+To ensure secure access through role-based authentication
+To improve transparency in order tracking and delivery
+⚙️ Technologies Used
 
-<header>
-    <h1>FarmersHub</h1>
-    <p>Full Stack Django Web Application</p>
-    <p>Developed by: <strong>Semeeha KM</strong></p>
-</header>
+Frontend:
 
-<section>
-    <h2>📌 Project Overview</h2>
-    <p>
-        FarmersHub is a full-stack web application developed using Django.
-        The platform connects farmers, sellers, customers, and cargo teams in a unified system.
-        It enables product listing, ordering, and delivery management with role-based access control.
-    </p>
-</section>
+HTML
+CSS
+JavaScript
 
-<section>
-    <h2>🎯 Objectives</h2>
-    <ul>
-        <li>Provide a platform for farmers to sell products directly</li>
-        <li>Enable users to browse and purchase products</li>
-        <li>Implement a cargo system for delivery tracking</li>
-        <li>Ensure secure and role-based system access</li>
-    </ul>
-</section>
+Backend:
 
-<section>
-    <h2>⚙️ Technologies Used</h2>
-    <ul>
-        <li>Frontend: HTML, CSS, JavaScript</li>
-        <li>Backend: Python (Django Framework)</li>
-        <li>Database: SQLite</li>
-        <li>Version Control: Git & GitHub</li>
-    </ul>
-</section>
+Python
+Django Framework
 
-<section>
-    <h2>👥 User Roles & Modules</h2>
+Database:
 
-    <h3>1. Admin Module</h3>
-    <ul>
-        <li>Manage users (farmers, sellers, cargo team)</li>
-        <li>Approve/reject registrations</li>
-        <li>Monitor orders and system activities</li>
-    </ul>
+SQLite
 
-    <h3>2. Farmer/Seller Module</h3>
-    <ul>
-        <li>Register and login</li>
-        <li>Add, edit, delete products</li>
-        <li>View orders placed by users</li>
-    </ul>
+Other Tools:
 
-    <h3>3. User Module</h3>
-    <ul>
-        <li>Browse products</li>
-        <li>Add to cart and place orders</li>
-        <li>Track order status</li>
-    </ul>
+Git & GitHub for version control
+👥 System Modules
+🔹 1. Admin Module
 
-    <h3>4. Cargo Team Module</h3>
-    <ul>
-        <li>Login via admin-enabled account</li>
-        <li>View assigned deliveries</li>
-        <li>Update delivery status (Only permission allowed)</li>
-    </ul>
-</section>
+The Admin has full control over the system and is responsible for managing all operations.
 
-<section>
-    <h2>🧩 Key Features</h2>
-    <ul>
-        <li>Role-based authentication system</li>
-        <li>Dynamic product management</li>
-        <li>Order and booking system</li>
-        <li>Delivery tracking system</li>
-        <li>Search and filter functionality</li>
-        <li>Responsive dashboard UI</li>
-    </ul>
-</section>
+Key Responsibilities:
 
-<section>
-    <h2>🔄 System Workflow</h2>
-    <ul>
-        <li>User registers and logs in</li>
-        <li>User browses products and places order</li>
-        <li>Seller receives order</li>
-        <li>Cargo team updates delivery status</li>
-        <li>User tracks order until delivery completion</li>
-    </ul>
-</section>
+Manage user registrations (approve/reject farmers, sellers, cargo team)
+Monitor orders and bookings
+Assign roles and permissions
+Activate cargo team accounts (staff access)
+Maintain overall system integrity
+🔹 2. Farmer/Seller Module
 
-<section>
-    <h2>🚀 Future Enhancements</h2>
-    <ul>
-        <li>AI-based delivery route optimization</li>
-        <li>Chatbot support for users</li>
-        <li>Online payment integration</li>
-        <li>Advanced analytics dashboard</li>
-    </ul>
-</section>
+Farmers or sellers can manage their products and view customer orders.
 
-<section>
-    <h2>📊 Project Highlights</h2>
-    <ul>
-        <li>Clean UI with sidebar navigation</li>
-        <li>Auto-refresh and smooth UI updates</li>
-        <li>Efficient database handling using Django ORM</li>
-        <li>Scalable and modular architecture</li>
-    </ul>
-</section>
+Features:
 
-<section>
-    <h2>📞 Contact</h2>
-    <p>Email: semeehakm72@gmail.com</p>
-    <p>Phone: 9447259734</p>
-</section>
+User registration and login
+Add, update, and delete products
+View order history
+Track product demand
+Manage inventory
+🔹 3. User (Customer) Module
 
-<footer>
-    <p>© 2026 Semeeha KM | FarmersHub Project</p>
-</footer>
+This module is designed for customers who purchase products.
 
-</body>
-</html>
+Features:
+
+User registration and login
+Browse available products
+Search and filter items
+Add products to cart
+Place orders
+Track order status
+🚚 4. Cargo Team Module (Dashboard Explanation)
+
+The Cargo Dashboard is a restricted-access module designed specifically for delivery personnel. Unlike other users, the cargo team has limited permissions, focusing only on delivery operations.
+
+🔐 Access Control
+Cargo team members are created by the Admin
+They are given staff access through the admin panel
+They do NOT have full admin rights
+Their dashboard is separate and role-specific
+📊 Cargo Dashboard Features
+1. 📦 View Assigned Orders
+Cargo members can view all orders assigned for delivery
+Orders include customer details, product details, and delivery address
+2. 🔄 Update Delivery Status
+
+This is the core functionality of the cargo team.
+
+They can update order status such as:
+
+Pending
+Shipped
+Out for Delivery
+Delivered
+
+👉 Important:
+
+Cargo team can ONLY update status
+They cannot modify product, user, or payment details
+3. 📍 Delivery Tracking
+Each status update reflects in the user’s dashboard
+Ensures real-time tracking of orders
+Improves transparency between users and delivery system
+4. 📋 Simplified Interface
+Clean and minimal dashboard UI
+Focused only on delivery-related actions
+Avoids unnecessary complexity
+5. 🔄 Real-Time / Smooth Updates
+The system can include auto-refresh or smooth reload functionality
+Ensures cargo team sees updated orders without manual refresh
+🧩 Key Features of the System
+Role-based authentication system
+Secure login and access control
+Dynamic product management
+Order and booking system
+Dedicated cargo delivery module
+Search and filtering functionality
+Clean dashboard UI for all roles
+Real-time status updates
+🔄 System Workflow
+User registers and logs into the system
+User browses and selects products
+User places an order
+Seller receives and processes the order
+Cargo team is assigned for delivery
+Cargo team updates delivery status
+User tracks order until successful delivery
+🚀 Future Enhancements
+AI-based route optimization for delivery
+Chatbot support for user assistance
+Online payment gateway integration
+Notification system (SMS/Email alerts)
+Advanced analytics dashboard
+Mobile application support
+📊 Project Highlights
+Modular and scalable architecture
+Clean and user-friendly interface
+Efficient database handling using Django ORM
+Secure role-based system design
+Real-world applicable solution for agricultural commerce
+📞 Contact
+
+Name: Semeeha KM
+Email: semeehakm72@gmail.com
+
+Phone: 9447259734
