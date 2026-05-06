@@ -9,11 +9,11 @@ The system allows product listing, order management, and delivery tracking
 with secure role-based access.
 
 # 🎯 Objectives
- Provide a platform for farmers and sellers to sell products
-Enable users to browse and purchase products easily
-Implement a structured delivery system using cargo team
-Ensure secure role-based authentication
-Improve transparency in order tracking
+- Provide a platform for farmers and sellers to sell products
+- Enable users to browse and purchase products easily
+- Implement a structured delivery system using cargo team
+- Ensure secure role-based authentication
+- Improve transparency in order tracking
 
 ## ⚙️ Technologies Used
 ### Frontend
