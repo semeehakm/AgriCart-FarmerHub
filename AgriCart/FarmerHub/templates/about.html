@@ -1,0 +1,117 @@
+{%extends 'base.html'%}
+{% load static %}
+    {%block content%}
+
+    <!-- Start All Title Box -->
+    <div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>ABOUT US</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{%url 'index' %}">Home</a></li>
+                        <li class="breadcrumb-item active">ABOUT US</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End All Title Box -->
+
+    <!-- Start About Page  -->
+    <div class="about-box-main">
+        <div class="container">
+            <div class="row">
+				<div class="col-lg-6">
+                    <div class="banner-frame"> <img class="img-fluid" src="{% static 'images/shop2.jpeg' %}" alt="" />
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="noo-sh-title-top">We are <span>AgriCart</span></h2><h4> Rating : ⭐ {{ avg_rating.rating__avg|default:"0"|floatformat:1 }} / 5</h4>
+
+
+    
+
+                   <p> AgriCart FarmerHub is a digital platform designed to connect farmers directly with consumers, creating a transparent and efficient agricultural marketplace. Our goal is to eliminate intermediaries, ensuring that farmers receive fair prices for their produce while customers enjoy fresh, high-quality products at reasonable rates.</p>
+
+<p>We believe in empowering farmers by providing them with a reliable online space to showcase and sell their products. At the same time, we help consumers make healthier choices by offering access to organic and farm-fresh vegetables, fruits, and other agricultural goods.</p>
+
+<p>AgriCart FarmerHub focuses on building trust, promoting sustainability, and supporting local farming communities. By leveraging technology, we aim to simplify the buying and selling process, making agriculture more accessible and profitable for everyone involved.</p>
+
+<p>Our mission is to create a farmer-friendly ecosystem where innovation meets tradition, ensuring a better future for both farmers and consumers.</p>
+					
+                </div>
+            </div>
+            <br><br>
+            <div class="row my-5">
+                <div class="col-sm-6 col-lg-4">
+                    <div class="service-block-inner">
+                        <h3>Direct Farmer-to-Consumer Selling</h3>
+                        <p>AgriCart FarmerHub allows farmers to sell their products directly to customers without intermediaries, ensuring fair pricing and better profits for farmers while providing fresh produce to consumers.</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="service-block-inner">
+                        <h3>Real-Time Order Tracking</h3>
+                        <p>Customers can easily track their orders from confirmation to delivery, providing transparency and improving trust in the purchasing process. </p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="service-block-inner">
+                        <h3>Easy Product Management for Farmers</h3>
+                        <p>Farmers can add, update, and manage their products effortlessly through the platform, making it simple to showcase their produce and reach more customers. </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-4">
+                <div class="col-12">
+                    <h2 class="noo-sh-title">🌿 Meet Our Team</h2>
+                </div>
+                <div class="row my-4 align-items-center">
+
+    <!-- LEFT: Your existing team card -->
+    <div class="col-md-4">
+        <div class="hover-team">
+            <div class="our-team">
+                <img src="{% static 'images/team.jpeg' %}" alt="" />
+
+                <ul class="social">
+                    <li><a href="https://www.instagram.com/" class="fab fa-instagram"></a></li>
+                    <li><a href="https://wa.me/919447259734" class="fab fa-whatsapp"></a></li>
+                    <li><a href="https://www.facebook.com/" class="fab fa-facebook"></a></li>
+                    <li><a href="https://www.youtube.com/" class="fab fa-youtube"></a></li>
+                </ul>
+
+                <div class="icon">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RIGHT: Description -->
+    <div class="col-md-8">
+        <div class="team-description">
+            <p>
+                
+
+At Agricart FarmerHub, our team is driven by a shared vision to empower farmers and simplify the way people access fresh agricultural products. We are a group of passionate individuals with diverse skills in technology, creativity, and problem-solving, working together to build a reliable and user-friendly platform.</p>
+
+<p>Each member of our team brings unique expertise, from development and design to planning and execution. Together, we strive to create innovative solutions that bridge the gap between farmers and consumers, ensuring quality, transparency, and efficiency.</p>
+
+<p>Our mission is not just to build an application, but to make a meaningful impact in the agricultural sector by supporting farmers and enhancing the overall user experience.
+            </p>
+        </div>
+    </div>
+
+</div>
+<hr>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+    <!-- End About Page -->
+
+    {%endblock%}

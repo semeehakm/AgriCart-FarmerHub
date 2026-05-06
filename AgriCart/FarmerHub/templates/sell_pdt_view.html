@@ -1,0 +1,158 @@
+{%extends 'base.html'%}
+{% load static %}
+    {%block content%}
+
+    {% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+    <!-- Start All Title Box -->
+    <div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Product Gallery</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{%url 'index' %}">Home</a></li>
+                        <li class="breadcrumb-item active">Product Gallery</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End All Title Box -->
+
+    <!-- Start Gallery  -->
+    <div class="products-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="title-all text-center">
+                        <h1>My Gallery</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lacus enim.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="special-menu text-center">
+                        <div class="button-group filter-button-group">
+                            <button class="active" data-filter="*">All</button>
+                            <button data-filter=".vegetables">Vegetables</button>
+                            <button data-filter=".fruits">Fruits</button>
+							<button data-filter=".grains">Grains</button>
+							<button data-filter=".spices">Spices</button>
+                            <button data-filter=".leafy">Leafy Greens</button>
+                            <button data-filter=".organic">Organic</button>
+                            <button data-filter=".diary">Diary Products</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row special-list">
+                {%if request.user.is_authenticated%}
+                    {%if is_seller %}
+                        {% for i in key2 %}
+                                <div class="col-lg-3 col-md-6 special-grid {{ i.category|lower }}">
+                                    <div class="products-single fix">
+                                        <div class="box-img-hover">
+                                            <img src="{{ i.image.url }}" class="img-fluid" alt="Image">
+                                            <div class="mask-icon">
+                                                <ul>
+                                                    <li><a href="{%url 'view_pdt' i.id %}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                                    <li><a href="{%url 'edit' i.id %}" data-toggle="tooltip" data-placement="right" title="Update"><i class="fas fa-edit"></i></a></li>
+                                                    <li><a href="{%url 'delete' i.id %}" data-toggle="tooltip" data-placement="right" title="Delete"><i class="fas fa-trash"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                         {%endfor%}
+            
+                <!-- End Gallery  -->
+                {% elif is_buyer %}
+                    {% for i in key2 %}
+                                <div class="col-lg-3 col-md-6  special-grid {{ i.category|lower }}">
+                                    <div class="products-single fix">
+                                        <div class="box-img-hover">
+                                            <div class="type-lb">
+                                                <p class="sale">Sale</p>
+                                            </div>
+                                            <img src="{{ i.image.url }}" class="img-fluid" alt="Image">
+                                            <div class="mask-icon">
+                                                <ul>
+                                                    <li><a href="{%url 'view_pdt' i.id %}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                                    {% if i.id %}
+<li>
+    <a href="{% url 'add_to_wishlist' i.id %}"
+       data-toggle="tooltip"
+       data-placement="right"
+       title="Add to Wishlist">
+
+        <i class="{% if i.id in wishlist_ids %}fas fa-heart text-danger{% else %}far fa-heart{% endif %}"></i>
+
+    </a>
+</li>
+{% endif %}
+                                                </ul>
+                                                
+                                                {% if i.quantity > 0 %}
+                                                    <form method="post" action="{% url 'add_to_cart' i.id %}">
+                                                    {% csrf_token %}
+                                                    
+                                                    <input type="hidden" name="quantity" value="1" min="1">
+                                                    <a class="cart">
+                                                    <button type="submit" class="cart"  style="border:none; background:none; color: white;">
+                                                        <strong>Add to Cart</strong>
+                                                    </button>
+                                                    </a>  
+                                                </form>
+                                                {% else %}
+                                                <a class="cart">
+                                                    <button type="button" class="cart"  style="border:none; background:none; color: rgb(221, 15, 15);">
+                                                        <strong>Out of Stock</strong>
+                                                    </button>
+                                                    </a>
+                                                {% endif %}
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                    {% else %}
+                    
+                {% endif %}
+            {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const params = new URLSearchParams(window.location.search);
+    const category = params.get("category");
+
+    if (category) {
+        const button = document.querySelector(`[data-filter=".${category}"]`);
+
+        // 🔥 REMOVE old active
+        document.querySelectorAll('.filter-button-group button').forEach(btn => {
+            btn.classList.remove('active');
+        });
+
+        // 🔥 ADD active to selected
+        if (button) {
+            button.classList.add('active');
+            button.click(); // trigger filter
+        }
+    }
+});
+</script>
+{%endblock%}

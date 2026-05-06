@@ -1,0 +1,141 @@
+{% extends 'index.html' %}
+{% block content %}
+
+<style>
+.table-card {
+    background: #fff;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.table thead {
+    background: #b0b435;
+    color: white;
+}
+
+
+
+.pending { background: orange; }
+
+</style>
+<div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Order History</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{%url 'index' %}">Home</a></li>
+                        <li class="breadcrumb-item active">Order History</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="container mt-5">
+
+    <h2 class="text-center mb-4" style="font-weight:bold;">
+         Seller Order History
+    </h2>
+
+    <!-- 🔍 SEARCH FILTER -->
+    <form method="GET" class="mb-4 d-flex justify-content-center align-items-center">
+
+    <div style="position:relative; width:50%;">
+
+        <input type="text"
+               name="search"
+               id="searchInput"
+               placeholder="Search product..."
+               class="form-control pr-5"
+               value="{{ request.GET.search|default:'' }}">
+
+        {% if request.GET.search %}
+        <span onclick="clearSearch()"
+              style="position:absolute; right:10px; top:50%; transform:translateY(-50%);
+                     cursor:pointer; font-weight:bold; color:gray;">
+            ✖
+        </span>
+        {% endif %}
+
+    </div>
+
+    <button type="submit"
+            class="btn ml-2"
+            style="background:#b0b435; color:white; height:38px;">
+        Search
+    </button>
+
+</form>
+
+    <div class="table-card shadow">
+
+        <table class="table table-bordered table-hover text-center">
+
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Product</th>
+                    <th>Order ID</th>
+                    <th>Buyer</th>
+                    <th>Quantity</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for order in orders %}
+                <tr>
+
+                    <td>
+                        <img src="{{ order.product.image.url }}" width="60" height="60" style="object-fit:cover; border-radius:8px;">
+                    </td>
+
+                    <td>{{ order.product.product_name }}</td>
+
+                    <td>#{{ order.id }}</td>
+
+                    <td>{{ order.buyer }}</td>
+
+                    <td>{{ order.quantity }} kg</td>
+
+                    <td>₹{{ order.amount }}</td>
+
+                    <td>
+                        <span class="badge-status {{ order.status|lower }}">
+                            {{ order.status }}
+                        </span>
+                    </td>
+<td>
+    {% if order.notification %}
+        {{ order.notification.created_at|date:"d M Y, h:i A" }}
+    {% else %}
+        -
+    {% endif %}
+</td>
+
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="8">No orders found</td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+
+<script>
+function clearSearch() {
+    window.location.href = window.location.pathname;
+}
+</script>
+
+{% endblock %}

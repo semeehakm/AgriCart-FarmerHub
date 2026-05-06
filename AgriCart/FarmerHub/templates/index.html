@@ -1,0 +1,1029 @@
+{%extends 'base.html'%}
+{% load static %}
+    {%block content%}
+  <style>
+/* Remove space so buttons stick to edge */
+.container {
+    position: relative;
+}
+
+/* Scroll row */
+#categoryRow {
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+
+/* Hide scrollbar */
+#categoryRow::-webkit-scrollbar {
+    display: none;
+}
+
+/* Force horizontal cards */
+#categoryRow > div {
+    min-width: 280px;
+    flex: 0 0 auto;
+}
+
+/* BUTTONS */
+.scroll-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    z-index: 10;
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+/* EXACT EDGE (no gap) */
+.scroll-btn.left {
+    left: 0;
+}
+
+.scroll-btn.right {
+    right: 0;
+}
+
+.scroll-btn:hover {
+    opacity: 1;
+}
+</style>
+    <!-- Start Slider -->
+
+    {% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-info">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+     {% if is_buyer %}
+    <div id="slides-shop" class="cover-slides">
+        <ul class="slides-container">
+            <li class="text-center">
+                <img src="{% static 'images/banner-01.jpg' %}" alt="">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="m-b-20"><strong>Farm Fresh Products<br>Deliverd to Your Door</strong></h1>
+                            <p class="m-b-40">Buy directly from farmers.<br> Fresh, organic, and affordable-straight from farm to your home.</p>
+                            <p><a class="btn hvr-hover" href="{% url 'gallery' %}">SHOP NOW</a></p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="text-center">
+                <img src="{% static 'images/banner-02.jpg' %}" alt="">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="m-b-20"><strong>Farm Fresh Products<br>Deliverd to Your Door</strong></h1>
+                            <p class="m-b-40">Buy directly from farmers.<br> Fresh, organic, and affordable-straight from farm to your home.</p>
+                            <p><a class="btn hvr-hover" href="{% url 'gallery' %}">SHOP NOW</a></p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="text-center">
+                <img src="{% static 'images/banner-03.jpg' %}" alt="">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="m-b-20"><strong>Farm Fresh Products<br>Deliverd to Your Door</strong></h1>
+                            <p class="m-b-40">Buy directly from farmers.<br> Fresh, organic, and affordable-straight from farm to your home.</p>
+                            <p><a class="btn hvr-hover" href="{% url 'gallery' %}">SHOP NOW</a></p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="slides-navigation">
+            <a href="#" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            <a href="#" class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+        </div>
+    </div>
+
+   <!-- Start Categories  -->
+     <div class="categories-shop">
+    <div class="container position-relative">
+
+        <!-- LEFT BUTTON -->
+        <button class="scroll-btn left" id="leftBtn">❮</button>
+
+        <!-- RIGHT BUTTON -->
+        <button class="scroll-btn right" id="rightBtn">❯</button>
+
+        <!-- SCROLL AREA -->
+        <div class="row flex-nowrap overflow-auto" id="categoryRow">
+            <!-- your categories -->
+        
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="shop-cat-box">
+                    <img class="img-fluid" src="{% static 'images\Vegetables.jpeg' %}" alt="" />
+                    <a class="btn hvr-hover" href="{% url 'gallery' %}?category=vegetables">Fresh Vegetables</a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="shop-cat-box">
+                    <img class="img-fluid" src="{% static 'images/grains.jpeg' %}" alt="" />
+                    <a class="btn hvr-hover" href="{% url 'gallery' %}?category=grains">Grains</a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="shop-cat-box">
+                    <img class="img-fluid" src="{% static 'images/fruits.jpeg' %}" alt="" />
+                    <a class="btn hvr-hover" href="{% url 'gallery' %}?category=fruits">Fruits</a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="shop-cat-box">
+                    <img class="img-fluid" src="{% static 'images/diary products.jpeg' %}" alt="" />
+                    <a class="btn hvr-hover" href="{% url 'gallery' %}?category=diary">Diary Products</a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="shop-cat-box">
+                    <img class="img-fluid" src="{% static 'images/organic basket.jpeg' %}" alt="" />
+                    <a class="btn hvr-hover" href="{% url 'gallery' %}?category=organic">Organic Basket</a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="shop-cat-box">
+                    <img class="img-fluid" src="{% static 'images/spices.jpeg' %}" alt="" />
+                    <a class="btn hvr-hover" href="{% url 'gallery' %}?category=spices">Spices</a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="shop-cat-box">
+                    <img class="img-fluid" src="{% static 'images/leafy greens.jpeg' %}" alt="" />
+                    <a class="btn hvr-hover" href="{% url 'gallery' %}?category=leafy">Leafy Greens</a>
+                </div>
+            </div>
+            
+
+            <!-- Add more categories like this -->
+            </div>
+
+    </div>
+</div>
+    <!-- End Categories -->
+	
+	<div class="box-add-products">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-12">
+					<div class="offer-box-products">
+                        <a href="{% url 'shop' %}" >
+						<img class="img-fluid" src="{% static 'images/offer1.jpeg' %}" alt="" /></a>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-12">
+					<div class="offer-box-products">
+                        <a href="{% url 'shop' %}" >
+						<img class="img-fluid" src="{% static 'images/offer2.jpeg' %}" alt="" /></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <!-- Start Products  -->
+     
+
+    <div class="products-box">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-12">
+                    <div class="title-all text-center">
+                        <h1>Fruits & Vegetables</h1>
+                        <p>Fresh and organic produce delivered directly from local farmers.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="special-menu text-center">
+                        <div class="button-group filter-button-group">
+                            <button class="active" data-filter="*">All</button>
+                            <button data-filter=".top-featured">Top featured</button>
+                            <button data-filter=".best-seller">Best seller</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row special-list">
+                {% for product in products %}
+<div class="col-lg-3 col-md-6 special-grid 
+    {% if product.id in top_featured_ids %}top-featured{% endif %}
+    {% if product.id in best_seller_ids %}best-seller{% endif %}">
+                    
+                    <div class="products-single fix">
+                        <div class="box-img-hover">
+                            <div class="type-lb">
+                                <p class="sale">Sale</p>
+                            </div>
+                            <img src="{{ product.image.url }}" class="img-fluid" alt="Image">
+                            <div class="mask-icon">
+                                <ul>
+                                    <li><a href="{%url 'view_pdt' product.id %}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                    <li>
+    <a href="{% url 'add_to_wishlist' product.id %}"
+       data-toggle="tooltip"
+       data-placement="right"
+       title="Add to Wishlist">
+
+        <i class="{% if product.id in wishlist_ids %}fas fa-heart text-danger{% else %}far fa-heart{% endif %}"></i>
+
+    </a>
+</li>
+                                </ul>
+                                
+                        {% if product.quantity > 0 %}
+                        <a class="cart" href="{% url 'add_to_cart' product.id %}">Add to Cart</a>
+                            </div>
+                        </div>
+                        <div class="why-text">
+                            <h4>{{ product.product_name }}</h4>
+                            <h5> ₹{{ product.price }}</h5>
+                        </div>
+
+                            <p style="color:green;">
+                                In Stock ({{ product.quantity }} left)
+                            </p>
+                        {% else %}
+                        <a class="cart" href="">Add to Cart</a>
+                            </div>
+                        </div>
+                        <div class="why-text">
+                            <h4>{{ product.product_name }}</h4>
+                            <h5> ₹{{ product.price }}</h5>
+                        </div>
+
+                            <p style="color:red;">
+                                Out of Stock
+                            </p>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    
+    <!-- End Products  -->
+
+    <!-- Start Blog  -->
+    <div class="latest-blog" id="blogs">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="title-all text-center">
+                        <h1>latest blog</h1>
+                        <p>Learn how to grow organic vegetables in your backyard with simple steps.</p>
+                    </div>
+                    <a href="{% url 'view_blogs' %}" 
+                       style="color:#b0b435; font-weight:bold; white-space:nowrap; text-align: left">
+                        Explore More →
+                    </a>
+                </div>
+            </div>
+            
+            <div class="row">
+                {% for blog in blogs %}
+                <div class="col-md-6 col-lg-4 col-xl-4">
+                    <div class="blog-box">
+                        <div class="blog-img">
+                            {% if blog.image %}
+                            <img class="img-fluid" src="{{ blog.image.url }}" alt="" />
+                            {% endif %}
+                        </div>
+                        <div class="blog-content">
+                            <div class="title-blog">
+                                <h3>{{ blog.title }}</h3>
+                                <p>{{ blog.content }}</p>
+                            </div>
+                            <ul class="option-blog">
+                                <li>
+                                    <!-- LIKE -->
+                                    <form method="POST" action="{% url 'blog_detail' blog.id %}" style="display:inline;">
+                                        {% csrf_token %}
+                                        <button type="submit" name="like_submit" style="border:none; background:none;">
+                                            <i class="far fa-heart"></i>
+                                        </button>
+                                    </form>
+                                </li>
+
+                                <li>
+                                    <!-- VIEW BLOG -->
+                                    <a href="{% url 'blog_detail' blog.id %}">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <!-- COMMENT (GO TO DETAIL PAGE COMMENT SECTION) -->
+                                    <a href="{% url 'blog_detail' blog.id %}#comments">
+                                        <i class="far fa-comments"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+        </div>
+ 
+            
+        </div>
+    </div>
+    <!-- End Blog  -->
+
+    {% elif is_seller %}
+
+    <div id="slides-shop" class="cover-slides">
+        <ul class="slides-container">
+            <li class="text-center">
+                <img src="{% static 'images/banner-01.jpg' %}" alt="">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="m-b-20"><strong>Farm Fresh Products<br>Deliverd to Your Door</strong></h1>
+                            <p class="m-b-40">Buy directly from farmers.<br> Fresh, organic, and affordable-straight from farm to your home.</p>
+                            <p><a class="btn hvr-hover" href="{% url 'gallery' %}">SHOP NOW</a></p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="text-center">
+                <img src="{% static 'images/banner-02.jpg' %}" alt="">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="m-b-20"><strong>Farm Fresh Products<br>Deliverd to Your Door</strong></h1>
+                            <p class="m-b-40">Buy directly from farmers.<br> Fresh, organic, and affordable-straight from farm to your home.</p>
+                            <p><a class="btn hvr-hover" href="{% url 'gallery' %}">SHOP NOW</a></p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="text-center">
+                <img src="{% static 'images/banner-03.jpg' %}" alt="">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="m-b-20"><strong>Farm Fresh Products<br>Deliverd to Your Door</strong></h1>
+                            <p class="m-b-40">Buy directly from farmers.<br> Fresh, organic, and affordable-straight from farm to your home.</p>
+                            <p><a class="btn hvr-hover" href="{% url 'gallery' %}">SHOP NOW</a></p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="slides-navigation">
+            <a href="#" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            <a href="#" class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+        </div>
+    </div>
+
+    <!-- Start Categories  -->
+     <div class="categories-shop">
+    <div class="container position-relative">
+
+        <!-- LEFT BUTTON -->
+        <button class="scroll-btn left" id="leftBtn">❮</button>
+
+        <!-- RIGHT BUTTON -->
+        <button class="scroll-btn right" id="rightBtn">❯</button>
+
+        <!-- SCROLL AREA -->
+        <div class="row flex-nowrap overflow-auto" id="categoryRow">
+            <!-- your categories -->
+        
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="shop-cat-box">
+                    <img class="img-fluid" src="{% static 'images\Vegetables.jpeg' %}" alt="" />
+                    <a class="btn hvr-hover" href="{% url 'gallery' %}?category=vegetables">Fresh Vegetables</a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="shop-cat-box">
+                    <img class="img-fluid" src="{% static 'images/grains.jpeg' %}" alt="" />
+                    <a class="btn hvr-hover" href="{% url 'gallery' %}?category=grains">Grains</a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="shop-cat-box">
+                    <img class="img-fluid" src="{% static 'images/fruits.jpeg' %}" alt="" />
+                    <a class="btn hvr-hover" href="{% url 'gallery' %}?category=fruits">Fruits</a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="shop-cat-box">
+                    <img class="img-fluid" src="{% static 'images/diary products.jpeg' %}" alt="" />
+                    <a class="btn hvr-hover" href="{% url 'gallery' %}?category=diary">Diary Products</a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="shop-cat-box">
+                    <img class="img-fluid" src="{% static 'images/organic basket.jpeg' %}" alt="" />
+                    <a class="btn hvr-hover" href="{% url 'gallery' %}?category=organic">Organic Basket</a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="shop-cat-box">
+                    <img class="img-fluid" src="{% static 'images/spices.jpeg' %}" alt="" />
+                    <a class="btn hvr-hover" href="{% url 'gallery' %}?category=spices">Spices</a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="shop-cat-box">
+                    <img class="img-fluid" src="{% static 'images/leafy greens.jpeg' %}" alt="" />
+                    <a class="btn hvr-hover" href="{% url 'gallery' %}?category=leafy">Leafy Greens</a>
+                </div>
+            </div>
+            
+
+            <!-- Add more categories like this -->
+            </div>
+
+    </div>
+</div>
+    <!-- End Categories -->
+	
+	<div class="box-add-products">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-12">
+					<div class="offer-box-products">
+                        <a href="{% url 'shop' %}" >
+						<img class="img-fluid" src="{% static 'images/offer1.jpeg' %}" alt="" /></a>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-12">
+					<div class="offer-box-products">
+                        <a href="{% url 'shop' %}" >
+						<img class="img-fluid" src="{% static 'images/offer2.jpeg' %}" alt="" /></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <!-- Start Products  -->
+     
+
+    <div class="products-box">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-12">
+                    <div class="title-all text-center">
+                        <h1>Fruits & Vegetables</h1>
+                        <p>Fresh and organic produce delivered directly from local farmers.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="special-menu text-center">
+                        <div class="button-group filter-button-group">
+                            <button class="active" data-filter="*">All</button>
+                            <button data-filter=".top-featured">Top featured</button>
+                            <button data-filter=".best-seller">Best seller</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row special-list">
+                {% for product in products %}
+<div class="col-lg-3 col-md-6 special-grid 
+    {% if product.id in top_featured_ids %}top-featured{% endif %}
+    {% if product.id in best_seller_ids %}best-seller{% endif %}">
+                    
+                    <div class="products-single fix">
+                        <div class="box-img-hover">
+                            <div class="type-lb">
+                                <p class="sale">Sale</p>
+                            </div>
+                            <img src="{{ product.image.url }}" class="img-fluid" alt="Image">
+                            <div class="mask-icon">
+                                <ul>
+                                    <li><a href="{%url 'view_pdt' product.id %}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                    <li><a href="{%url 'edit' product.id %}" data-toggle="tooltip" data-placement="right" title="Update"><i class="fas fa-edit"></i></a></li>
+                                    <li><a href="{%url 'delete' product.id %}" data-toggle="tooltip" data-placement="right" title="Delete"><i class="fas fa-trash"></i></a></li>
+                                </ul>
+                                
+                        {% if product.quantity > 0 %}
+                        <a class="cart" href="{% url 'edit' product.id %}">Edit Product</a>
+                            </div>
+                        </div>
+                        <div class="why-text">
+                            <h4>{{ product.product_name }}</h4>
+                            <h5> ₹{{ product.price }}</h5>
+                        </div>
+
+                            <p style="color:green;">
+                                In Stock ({{ product.quantity }} left)
+                            </p>
+                        {% else %}
+                        <a class="cart" href="{% url 'edit' product.id %}">Edit Product</a>
+                            </div>
+                        </div>
+                        <div class="why-text">
+                            <h4>{{ product.product_name }}</h4>
+                            <h5> ₹{{ product.price }}</h5>
+                        </div>
+
+                            <p style="color:red;">
+                                Out of Stock
+                            </p>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    
+    <!-- End Products  -->
+
+    <!-- Start Blog  -->
+    <div class="latest-blog" id="blogs">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="title-all text-center">
+                        <h1>latest blog</h1>
+                        <p>Learn how to grow organic vegetables in your backyard with simple steps.</p>
+                    </div>
+                    <a href="{% url 'view_blogs' %}" 
+                       style="color:#b0b435; font-weight:bold; white-space:nowrap; text-align: left">
+                        Explore More →
+                    </a>
+                </div>
+            </div>
+            
+            <div class="row">
+                {% for blog in blogs %}
+                <div class="col-md-6 col-lg-4 col-xl-4">
+                    <div class="blog-box">
+                        <div class="blog-img">
+                            {% if blog.image %}
+                            <img class="img-fluid" src="{{ blog.image.url }}" alt="" />
+                            {% endif %}
+                        </div>
+                        <div class="blog-content">
+                            <div class="title-blog">
+                                <h3>{{ blog.title }}</h3>
+                                <p>{{ blog.content }}</p>
+                            </div>
+                            <ul class="option-blog">
+                                <li>
+                                    <!-- LIKE -->
+                                    <form method="POST" action="{% url 'blog_detail' blog.id %}" style="display:inline;">
+                                        {% csrf_token %}
+                                        <button type="submit" name="like_submit" style="border:none; background:none;">
+                                            <i class="far fa-heart"></i>
+                                        </button>
+                                    </form>
+                                </li>
+
+                                <li>
+                                    <!-- VIEW BLOG -->
+                                    <a href="{% url 'blog_detail' blog.id %}">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <!-- COMMENT (GO TO DETAIL PAGE COMMENT SECTION) -->
+                                    <a href="{% url 'blog_detail' blog.id %}#comments">
+                                        <i class="far fa-comments"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+                       <div class="text-center mt-3">
+            <a class="btn btn-outline-custom" href="{% url 'add_blog' %}">
+                <strong>ADD YOUR BLOG</strong>
+            </a>
+        </div>
+ 
+            
+        </div>
+    </div>
+    <!-- End Blog  -->
+
+    {% else %}
+
+   
+    <!-- Start Slider -->
+    <div id="slides-shop" class="cover-slides">
+        <ul class="slides-container">
+            <li class="text-center">
+                <img src="{% static 'images/banner-01.jpg' %}" alt="">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="m-b-20"><strong>Farm Fresh Products<br>Deliverd to Your Door</strong></h1>
+                            <p class="m-b-40">Buy directly from farmers.<br> Fresh, organic, and affordable-straight from farm to your home.</p>
+                            <p><a class="btn hvr-hover" href="{% url 'log_in' %}">SHOP NOW</a></p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="text-center">
+                <img src="{% static 'images/banner-02.jpg' %}" alt="">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="m-b-20"><strong>Farm Fresh Products<br>Deliverd to Your Door</strong></h1>
+                            <p class="m-b-40">Buy directly from farmers.<br> Fresh, organic, and affordable-straight from farm to your home.</p>
+                            <p><a class="btn hvr-hover" href="{% url 'log_in' %}">SHOP NOW</a></p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="text-center">
+                <img src="{% static 'images/banner-03.jpg' %}" alt="">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="m-b-20"><strong>Farm Fresh Products<br>Deliverd to Your Door</strong></h1>
+                            <p class="m-b-40">Buy directly from farmers.<br> Fresh, organic, and affordable-straight from farm to your home.</p>
+                            <p><a class="btn hvr-hover" href="{% url 'log_in' %}">SHOP NOW</a></p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="slides-navigation">
+            <a href="#" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            <a href="#" class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <!-- End Slider -->
+
+    <!-- Start Categories  -->
+     <div class="categories-shop">
+    <div class="container position-relative">
+
+        <!-- LEFT BUTTON -->
+        <button class="scroll-btn left" id="leftBtn">❮</button>
+
+        <!-- RIGHT BUTTON -->
+        <button class="scroll-btn right" id="rightBtn">❯</button>
+
+        <!-- SCROLL AREA -->
+        <div class="row flex-nowrap overflow-auto" id="categoryRow">
+            <!-- your categories -->
+        
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="shop-cat-box">
+                    <img class="img-fluid" src="{% static 'images\Vegetables.jpeg' %}" alt="" />
+                    <a class="btn hvr-hover" href="{% url 'log_in' %}">Fresh Vegetables</a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="shop-cat-box">
+                    <img class="img-fluid" src="{% static 'images/grains.jpeg' %}" alt="" />
+                    <a class="btn hvr-hover" href="{% url 'log_in' %}">Grains</a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="shop-cat-box">
+                    <img class="img-fluid" src="{% static 'images/fruits.jpeg' %}" alt="" />
+                    <a class="btn hvr-hover" href="{% url 'log_in' %}">Fruits</a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="shop-cat-box">
+                    <img class="img-fluid" src="{% static 'images/diary products.jpeg' %}" alt="" />
+                    <a class="btn hvr-hover" href="{% url 'log_in' %}">Diary Products</a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="shop-cat-box">
+                    <img class="img-fluid" src="{% static 'images/organic basket.jpeg' %}" alt="" />
+                    <a class="btn hvr-hover" href="{% url 'log_in' %}">Organic Basket</a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="shop-cat-box">
+                    <img class="img-fluid" src="{% static 'images/spices.jpeg' %}" alt="" />
+                    <a class="btn hvr-hover" href="{% url 'log_in' %}">Spices</a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="shop-cat-box">
+                    <img class="img-fluid" src="{% static 'images/leafy greens.jpeg' %}" alt="" />
+                    <a class="btn hvr-hover" href="{% url 'log_in' %}">Leafy Greens</a>
+                </div>
+            </div>
+            
+
+            <!-- Add more categories like this -->
+            </div>
+
+    </div>
+</div>
+    <!-- End Categories -->
+	
+	<div class="box-add-products">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-12">
+					<div class="offer-box-products">
+                        <a href="{% url 'shop' %}" >
+						<img class="img-fluid" src="{% static 'images/offer1.jpeg' %}" alt="" /></a>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-12">
+					<div class="offer-box-products">
+                        <a href="{% url 'shop' %}" >
+						<img class="img-fluid" src="{% static 'images/offer2.jpeg' %}" alt="" /></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <!-- Start Products  -->
+    <div class="products-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="title-all text-center">
+                        <h1>Fruits & Vegetables</h1>
+                        <p>Fresh and organic produce delivered directly from local farmers.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="special-menu text-center">
+                        <div class="button-group filter-button-group">
+                            <button class="active" data-filter="*">All</button>
+                            <button data-filter=".top-featured">Top featured</button>
+                            <button data-filter=".best-seller">Best seller</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row special-list">
+                <div class="col-lg-3 col-md-6 special-grid best-seller">
+                    <div class="products-single fix">
+                        <div class="box-img-hover">
+                            <div class="type-lb">
+                                <p class="sale">Sale</p>
+                            </div>
+                            <img src="{% static 'images/carrot.jpeg' %}" class="img-fluid" alt="Image">
+                            <div class="mask-icon">
+                                <ul>
+                                    <li><a href="{% url 'log_in' %}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                    <li><a href="{% url 'log_in' %}" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
+                                    <li><a href="{% url 'log_in' %}" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                                </ul>
+                                <a class="cart" href="{% url 'log_in' %}">Add to Cart</a>
+                            </div>
+                        </div>
+                        <div class="why-text">
+                            <h4>Carrot</h4>
+                            <h5> ₹ 30</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 special-grid top-featured">
+                    <div class="products-single fix">
+                        <div class="box-img-hover">
+                            <div class="type-lb">
+                                <p class="new">New</p>
+                            </div>
+                            <img src="{% static 'images/orange.jpeg' %}" class="img-fluid" alt="Image">
+                            <div class="mask-icon">
+                                <ul>
+                                    <li><a href="{% url 'log_in' %}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                    <li><a href="{% url 'log_in' %}" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
+                                    <li><a href="{% url 'log_in' %}" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                                </ul>
+                                <a class="cart" href="{% url 'log_in' %}">Add to Cart</a>
+                            </div>
+                        </div>
+                        <div class="why-text">
+                            <h4>Orange</h4>
+                            <h5> ₹ 60</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 special-grid top-featured">
+                    <div class="products-single fix">
+                        <div class="box-img-hover">
+                            <div class="type-lb">
+                                <p class="sale">Sale</p>
+                            </div>
+                            <img src="{% static 'images/organic.jpeg' %}" class="img-fluid" alt="Image">
+                            <div class="mask-icon">
+                                <ul>
+                                    <li><a href="{% url 'log_in' %}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                    <li><a href="{% url 'log_in' %}" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
+                                    <li><a href="{% url 'log_in' %}" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                                </ul>
+                                <a class="cart" href="{% url 'log_in' %}">Add to Cart</a>
+                            </div>
+                        </div>
+                        <div class="why-text">
+                            <h4>Organic Vegitables</h4>
+                            <h5> ₹ 100</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 special-grid best-seller">
+                    <div class="products-single fix">
+                        <div class="box-img-hover">
+                            <div class="type-lb">
+                                <p class="sale">Sale</p>
+                            </div>
+                            <img src="{% static 'images/spice.jpeg' %}" class="img-fluid" alt="Image">
+                            <div class="mask-icon">
+                                <ul>
+                                    <li><a href="{% url 'log_in' %}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                    <li><a href="{% url 'log_in' %}" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
+                                    <li><a href="{% url 'log_in' %}" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                                </ul>
+                                <a class="cart" href="{% url 'log_in' %}">Add to Cart</a>
+                            </div>
+                        </div>
+                        <div class="why-text">
+                            <h4>Black Pepper</h4>
+                            <h5> ₹ 200</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Products  -->
+
+    <!-- Start Blog  -->
+    <div class="latest-blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="title-all text-center">
+                        <h1>latest blog</h1>
+                        <p>Learn how to grow organic vegetables in your backyard with simple steps.</p>
+                    </div>
+                    <a href="{% url 'log_in' %}" 
+                       style="color:#b0b435; font-weight:bold; white-space:nowrap; text-align: left">
+                        Explore More →
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-4 col-xl-4">
+                    <div class="blog-box">
+                        <div class="blog-img">
+                            <img class="img-fluid" src="{% static 'images/organic basket.jpeg' %}" alt="" />
+                        </div>
+                        <div class="blog-content">
+                            <div class="title-blog">
+<h3>Fresh Organic Farm Products</h3>
+<p>Buy fresh and organic products directly from farmers. Our platform ensures quality, affordability, and a seamless connection between farmers and buyers.</p>                            </div>
+                            <ul class="option-blog">
+                                <li><a href="{% url 'log_in' %}"><i class="far fa-heart"></i></a></li>
+                                <li><a href="{% url 'log_in' %}"><i class="fas fa-eye"></i></a></li>
+                                <li><a href="{% url 'log_in' %}"><i class="far fa-comments"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 col-xl-4">
+                    <div class="blog-box">
+                        <div class="blog-img">
+                            <img class="img-fluid" src="{% static 'images/leafy greens.jpeg' %}" alt="" />
+                        </div>
+                        <div class="blog-content">
+                            <div class="title-blog">
+                                <h3>Fresh & Organic Farm Products</h3>
+<p>Discover fresh and organic products directly from local farmers. Our platform connects farmers and buyers, ensuring quality produce, fair pricing, and a seamless shopping experience.</p>
+                            </div>
+                            <ul class="option-blog">
+                                <li><a href="{% url 'log_in' %}"><i class="far fa-heart"></i></a></li>
+                                <li><a href="{% url 'log_in' %}"><i class="fas fa-eye"></i></a></li>
+                                <li><a href="{% url 'log_in' %}"><i class="far fa-comments"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 col-xl-4">
+                    <div class="blog-box">
+                        <div class="blog-img">
+                            <img class="img-fluid" src="{% static 'images/vegetables.jpeg' %}" alt="" />
+                        </div>
+                        <div class="blog-content">
+                            <div class="title-blog">
+                                <h3>Farm Fresh Products Delivered to You</h3>
+<p>Buy fresh vegetables, fruits, and other farm products directly from local farmers. Our platform ensures quality, fair pricing, and a simple way to connect farmers with buyers.</p>
+                            </div>
+                            <ul class="option-blog">
+                                <li><a href="{% url 'log_in' %}"><i class="far fa-heart"></i></a></li>
+                                <li><a href="{% url 'log_in' %}"><i class="fas fa-eye"></i></a></li>
+                                <li><a href="{% url 'log_in' %}"><i class="far fa-comments"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Blog  -->
+
+
+
+    {% endif %}
+
+
+    <script>
+const row = document.getElementById("categoryRow");
+const leftBtn = document.getElementById("leftBtn");
+const rightBtn = document.getElementById("rightBtn");
+
+// Scroll functions
+leftBtn.onclick = () => {
+    row.scrollBy({ left: -300, behavior: 'smooth' });
+};
+
+rightBtn.onclick = () => {
+    row.scrollBy({ left: 300, behavior: 'smooth' });
+};
+
+// Show / hide buttons
+function updateButtons() {
+    const scrollLeft = row.scrollLeft;
+    const maxScroll = row.scrollWidth - row.clientWidth;
+
+    // Hide left button at start
+    if (scrollLeft <= 0) {
+        leftBtn.style.display = "none";
+    } else {
+        leftBtn.style.display = "block";
+    }
+
+    // Hide right button at end
+    if (scrollLeft >= maxScroll - 5) {
+        rightBtn.style.display = "none";
+    } else {
+        rightBtn.style.display = "block";
+    }
+}
+
+// Run on load
+updateButtons();
+
+// Run on scroll
+row.addEventListener("scroll", updateButtons);
+
+// Run on resize (important!)
+window.addEventListener("resize", updateButtons);
+</script>
+    {%endblock%}
+
+    
+   

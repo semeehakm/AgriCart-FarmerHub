@@ -1,0 +1,72 @@
+{%extends 'base.html'%}
+{% load static %}
+    {%block content%}
+
+    <!-- Start All Title Box -->
+    <div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Contact Us</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                        <li class="breadcrumb-item active">Contact Us </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End All Title Box -->
+
+    <!-- Start Contact Us  -->
+    <div class="col-12 contact-info-left">
+    <div class="contact-info-left p-5" style="background:#fff; border-radius:10px; box-shadow:0 0 20px rgba(0,0,0,0.1);">
+
+        <h2 style="font-size:32px; font-weight:700; margin-bottom:20px;">
+            CONTACT INFO
+        </h2>
+
+        <p style="font-size:18px; line-height:1.8; color:#555;">
+            We are a small team with a big vision—to connect farmers directly with people through technology.
+            Our focus is on creating a simple, user-friendly platform that supports farmers and ensures fresh products reach every home.
+        </p>
+
+        <h4>Our Website Rating</h4>
+
+<p>
+    ⭐ {{ avg_rating.rating__avg|default:"0"|floatformat:1 }} / 5
+</p>
+        <ul style="margin-top:30px; font-size:18px; line-height:2.5;">
+
+            <li>
+                <p>
+                    <i class="fas fa-map-marker-alt" style="color:#b0b435; font-size:22px;"></i>
+                    <strong>Address:</strong>
+                    AgriCart FarmerHub, Karumathra, Thrissur, Kerala, India - 680123
+                </p>
+            </li>
+
+            <li>
+                <p>
+                    <i class="fas fa-phone-square" style="color:#b0b435; font-size:22px;"></i>
+                    <strong>Phone:</strong>
+                    <a href="tel:+91944759734" style="font-size:18px;">+91 944 7259 734</a>
+                </p>
+            </li>
+
+            <li>
+                <p>
+                    <i class="fas fa-envelope" style="color:#b0b435; font-size:22px;"></i>
+                    <strong>Email:</strong>
+                    <a href="mailto:agricartfarmerhub@gmail.com" style="font-size:18px;">
+                        agricartfarmerhub@gmail.com
+                    </a>
+                </p>
+            </li>
+
+        </ul>
+
+    </div>
+</div>
+    <!-- End Cart -->
+{%endblock%}

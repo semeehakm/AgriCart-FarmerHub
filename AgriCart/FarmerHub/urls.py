@@ -1,0 +1,48 @@
+from django.urls import path
+from . import views
+
+
+
+urlpatterns=[
+    path('',views.index, name='index'),
+    path('about/',views.about, name='about'),
+    path('contact_us/',views.contact_us, name='contact_us'),
+    path('checkout/',views.checkout, name='checkout'),
+    path('gallery/',views.gallery, name='gallery'),
+    path('my-account/', views.my_account, name='my_account'),
+    path('view_pdt/<int:id>',views.view_pdt, name='view_pdt'),
+    path('log_in/',views.log_in, name='log_in'),
+    path('log_out/',views.log_out, name='log_out'),
+    path('buy_reg/',views.buy_reg, name='buy_reg'),
+    path('sell_reg/',views.sell_reg, name='sell_reg'),
+    path('cart_view/',views.cart_view, name='cart_view'),
+    path('add_product/',views.add_product, name='add_product'),
+    path('edit/<int:id>',views.edit, name='edit'),
+    path('delete/<int:id>',views.delete, name='delete'),
+    path('add_to_cart/<int:id>/', views.add_to_cart, name='add_to_cart'),
+    path('dele/<int:id>',views.dele, name='dele'),
+    path('update_cart/', views.update_cart, name='update_cart'),
+    path('payment_success/<int:id>',views.payment_success, name='payment_success'),
+    path('account/',views.account, name='account'),
+    path('my-orders/', views.track_order, name='track_order'),    
+    path('add_blog/', views.add_blog, name='add_blog'),
+    path('blogs/', views.view_blogs, name='view_blogs'),
+    path('blogs/<int:id>/', views.blog_detail, name='blog_detail'),
+    path('blogs/<int:id>/share/', views.share_blog, name='share_blog'),
+    path('blogs/delete/<int:id>/', views.delete_blog, name='delete_blog'),
+    path('track-delivery/<int:id>/', views.track_delivery, name='track_delivery'),
+    path('order-history/', views.order_history, name='order_history'),
+    path('edit-profile/', views.edit_profile, name='edit_profile'),    
+    path('add_to_wishlist/<int:product_id>/', views.add_to_wishlist, name='add_to_wishlist'),
+    path('wishlist/', views.wishlist_view, name='wishlist_view'),
+    path('remove_from_wishlist/<int:item_id>/', views.remove_from_wishlist, name='remove_from_wishlist'),
+    path('help/', views.help_page, name='help'),
+    path('shop/', views.shop, name='shop'),
+    path('add-site-rating/', views.add_site_rating, name='add_site_rating'),
+    path('order-details/<int:id>/', views.order_details, name='order_details'),
+    path('open-notification/<int:id>/', views.open_notification, name='open_notification'),
+    path('seller-order-history/', views.seller_order_history, name='seller_order_history'),
+    path('cargo-dashboard/', views.cargo_dashboard, name='cargo_dashboard'),
+    path('update_delivery_status/<int:id>/', views.update_delivery_status, name='update_delivery_status'),
+    ]
+    

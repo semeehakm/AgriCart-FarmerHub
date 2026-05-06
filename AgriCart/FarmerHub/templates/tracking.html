@@ -1,0 +1,106 @@
+{%extends 'base.html'%}
+{% load static %}
+    {%block content%}
+
+
+    <!-- Start All Title Box -->
+    <div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>TRACK ORDER</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{%url 'index' %}">Shop</a></li>
+                        <li class="breadcrumb-item active">Track Order</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End All Title Box -->
+
+    
+
+
+
+<!-- Start My Orders -->
+<div class="products-box">
+    <div class="container">
+
+        <!-- TITLE -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                    <h1>My Orders</h1>
+                    <p>Track your purchased products and their delivery status.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ORDER LIST -->
+        <div class="row special-list">
+            {% if orders %}
+                {% for order in orders %}
+
+                <div class="col-lg-3 col-md-6 special-grid">
+                    <div class="products-single fix">
+
+                        <!-- IMAGE -->
+                        <div class="box-img-hover">
+                            <img src="{{ order.product.image.url }}" class="img-fluid" alt="">
+                        </div>
+
+                        <!-- DETAILS -->
+                        <div class="why-text">
+                            <h4>{{ order.product.product_name }}</h4>
+                            <h5>₹{{ order.amount }}</h5>
+
+                            <p>Qty: {{ order.quantity }}</p>
+
+                            <!-- STATUS -->
+                            <p>
+                                Status:
+                                {% if order.status == 'Pending' %}
+                                    <span style="color:orange; font-weight:bold;">
+                                        {{ order.status }}
+                                    </span>
+
+                                {% elif order.status == 'Shipped' %}
+                                    <span style="color:blue; font-weight:bold;">
+                                        {{ order.status }}
+                                    </span>
+
+                                {% elif order.status == 'Delivered' %}
+                                    <span style="color:green; font-weight:bold;">
+                                        {{ order.status }}
+                                    </span>
+
+                                {% else %}
+                                    <span style="font-weight:bold;">
+                                        {{ order.status }}
+                                    </span>
+                                {% endif %}
+                            </p>
+
+                            <!-- ORDER ID -->
+                            <small>Order ID: {{ order.id }}</small>
+                        </div>
+                        <a href="{% url 'track_delivery' order.id %}" class="btn btn-outline-custom"><i class="fa fa-truck"></i>Track Delivery</a>
+
+                    </div>
+                </div>
+
+                {% endfor %}
+            {% else %}
+                <div class="col-lg-12 text-center">
+                    <p>No orders found</p>
+                </div>
+            {% endif %}
+        </div>
+
+    </div>
+</div>
+<!-- End My Orders -->
+
+
+{%endblock%}

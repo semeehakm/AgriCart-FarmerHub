@@ -1,0 +1,251 @@
+{%extends 'base.html'%}
+{% load static %}
+    {%block content%}
+
+    {% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-info">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+    <!-- Start All Title Box -->
+    <div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Shop</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{%url 'index' %}">Home</a></li>
+                        <li class="breadcrumb-item active">Shop</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End All Title Box -->
+
+    <!-- Start Shop Page -->
+<div class="shop-box-inner">
+
+    <div class="container-fluid px-4">
+
+        <div class="row">
+
+            <div class="col-12 shop-content-right">
+
+                <div class="right-product-box">
+
+                    <div class="product-item-filter row align-items-center mb-3 p-2">
+
+                        <!-- LEFT SIDE: SORT -->
+                        <div class="col-12 col-sm-8 text-center text-sm-left">
+
+                            <div class="toolbar-sorter-right d-inline-flex align-items-center">
+
+                                <span class="mr-2">Sort by</span>
+
+                                
+                                    <!-- SORT -->
+<select id="sort" name="sort" class="form-control form-control-sm w-auto">
+    <option value="">Sort By</option>
+    <option value="low" {% if request.GET.sort == "low" %}selected{% endif %}>Price: Low → High</option>
+    <option value="high" {% if request.GET.sort == "high" %}selected{% endif %}>Price: High → Low</option>
+    <option value="best" {% if request.GET.sort == "best" %}selected{% endif %}>Best Selling</option>
+    <option value="featured" {% if request.GET.sort == "featured" %}selected{% endif %}>Featured</option>
+</select>
+
+<!-- CATEGORY -->
+<select id="category" name="category" class="form-control form-control-sm w-auto">
+    <option value="">All Categories</option>
+    {% for i in categories %}
+        <option value="{{ i.id }}"
+            {% if request.GET.category == i.id|stringformat:"s" %}selected{% endif %}>
+            {{ i.category }}
+        </option>
+    {% endfor %}
+</select>
+                            </div>
+
+                            
+
+                        </div>
+
+                        <!-- RIGHT SIDE: TABS -->
+                        <div class="col-12 col-sm-4 text-center text-sm-right mt-2 mt-sm-0">
+
+                            <ul class="nav nav-tabs justify-content-sm-end border-0">
+
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="tab" href="#grid-view">
+                                        <i class="fa fa-th"></i>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#list-view">
+                                        <i class="fa fa-list-ul"></i>
+                                    </a>
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+<!-- TAB CONTENT -->
+<div class="tab-content mt-3">
+
+    <div id="grid-view" class="tab-pane fade show active">
+        
+                                    <div class="row special-list">
+                {% for product in products %}
+<div class="col-lg-3 col-md-6 special-grid">
+                    
+                    <div class="products-single fix">
+                        <div class="box-img-hover">
+                            <div class="type-lb">
+                                <p class="sale">Sale</p>
+                            </div>
+                            <img src="{{ product.image.url }}" class="img-fluid" alt="Image">
+                            <div class="mask-icon">
+                                <ul>
+                                    <li><a href="{%url 'view_pdt' product.id %}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                    <li>
+    <a href="{% url 'add_to_wishlist' product.id %}"
+       data-toggle="tooltip"
+       data-placement="right"
+       title="Add to Wishlist">
+
+        <i class="{% if product.id in wishlist_ids %}fas fa-heart text-danger{% else %}far fa-heart{% endif %}"></i>
+
+    </a>
+</li>
+                                </ul>
+                                
+                        {% if product.quantity > 0 %}
+                        <a class="cart" href="{% url 'add_to_cart' product.id %}">Add to Cart</a>
+                            </div>
+                        </div>
+                        <div class="why-text">
+                            <h4>{{ product.product_name }}</h4>
+                            <h5> ₹{{ product.price }}</h5>
+                        </div>
+
+                            <p style="color:green;">
+                                In Stock ({{ product.quantity }} left)
+                            </p>
+                        {% else %}
+                        <a class="cart" href="" style="color: red;">Out of Stock</a>
+                            </div>
+                        </div>
+                        <div class="why-text">
+                            <h4>{{ product.product_name }}</h4>
+                            <h5> ₹{{ product.price }}</h5>
+                        </div>
+
+                            <p style="color:red;">
+                                Out of Stock
+                            </p>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+   
+
+    <!-- LIST VIEW -->
+    <div class="tab-pane fade" id="list-view">
+
+        {% for i in products %}
+        <div class="row mb-3 border p-2 align-items-center">
+
+            <div class="col-md-3 text-center">
+                <img src="{{ i.image.url }}" class="img-fluid" style="height:140px; object-fit:cover;">
+            </div>
+
+            <div class="col-md-9">
+
+                <h4>{{ i.product_name }}</h4>
+                <h5 class="text-success">₹{{ i.price }}</h5>
+
+                <p class="text-muted">
+                    {{ i.product_description }}
+                </p>
+
+                <a href="{% url 'view_pdt' i.id %}" class="btn btn-sm btn-outline-custom">
+                    <i class="fas fa-eye"></i> View
+                </a>
+{% if i.quantity > 0 %}
+                        <a class="btn btn-sm btn-outline-custom "  href="{% url 'add_to_cart' i.id %}">Add to Cart</a>
+                            
+
+
+                            <p style="color:green;">
+                                In Stock ({{ i.quantity }} left)
+                            </p>
+                        {% else %}
+                        <a class="btn btn-sm btn-outline-custom"  href="" style="color: red;">Out of Stock</a>
+                            
+        
+
+                            <p style="color:red;">
+                                Out of Stock
+                            </p>
+                        {% endif %}
+                
+
+            </div>
+
+        </div>
+        {% endfor %}
+
+    </div>
+
+</div>
+                        </div>
+                        
+                        
+                        
+                        
+                    </div>
+                    
+                </div>
+				
+            </div>
+        </div>
+    </div>
+    <!-- End Shop Page -->
+
+   <script>
+document.getElementById("sort").addEventListener("change", function () {
+    applyFilters();
+});
+
+document.getElementById("category").addEventListener("change", function () {
+    applyFilters();
+});
+
+function applyFilters() {
+    const sort = document.getElementById("sort").value;
+    const category = document.getElementById("category").value;
+
+    let params = [];
+
+    if (sort) {
+        params.push("sort=" + sort);
+    }
+
+    if (category) {
+        params.push("category=" + category);
+    }
+
+    let query = params.length ? "?" + params.join("&") : "";
+
+    window.location.href = window.location.pathname + query;
+}
+</script>
+{%endblock%}

@@ -1,0 +1,189 @@
+{% extends 'index.html' %}
+{% block content %}
+<style>
+    .order-card {
+    background: #fff;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.order-card:hover {
+    transform: translateY(-5px);
+}
+
+/* IMAGE */
+.img-box {
+    height: 100%;
+}
+
+.img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* TITLE */
+.product-title {
+    font-weight: 700;
+    color: #333;
+}
+
+/* DIVIDER */
+.divider {
+    height: 2px;
+    background: #b0b435;
+    width: 60px;
+    margin: 10px 0 15px;
+}
+
+/* AMOUNT */
+.amount {
+    color: #28a745;
+    font-weight: bold;
+}
+
+/* SELLER EARNING */
+.earnings {
+    color: #b0b435;
+    font-weight: bold;
+}
+
+/* PICKUP */
+.pickup {
+    color: #ff9800;
+    font-weight: bold;
+}
+</style>
+
+    <!-- Start All Title Box -->
+    <div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Order Details</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{%url 'index' %}">Home</a></li>
+                        <li class="breadcrumb-item active">Order Details</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End All Title Box -->
+
+{% if is_seller %}
+<div class="container mt-5">
+
+    <!-- TITLE -->
+    <h2 class="text-center mb-5" style="font-weight:700; color:#333;">
+        Order Details
+    </h2>
+
+    {% for order in order_items %}
+    <div class="order-card shadow">
+
+        <div class="row no-gutters">
+
+            <!-- IMAGE -->
+            <div class="col-md-4">
+                <div class="img-box">
+                    <img src="{{ order.product.image.url }}" alt="">
+                </div>
+            </div>
+
+            <!-- DETAILS -->
+            <div class="col-md-8 p-4">
+
+                <h4 class="product-title">
+                    {{ order.product.product_name }}
+                </h4>
+
+                <div class="divider"></div>
+
+                <p><strong>Order ID:</strong> #{{ order.id }}</p>
+                <p><strong>Quantity:</strong> {{ order.quantity }}</p>
+
+                <p>
+                    <strong>Total Amount:</strong> 
+                    <span class="amount">₹{{ order.amount }}</span>
+                </p>
+<p><b>Payment Status:</b> {{ order.status }}</p>
+
+                           
+
+                <!-- PICKUP TIME -->
+               
+
+{% for order in order_items %}
+    <p style="color:#555;">
+        Ready for pickup by 
+        <b>{{ order.pickup_time|date:"d M Y, h:i A" }}</b>
+    </p>
+{% endfor %}
+
+            </div>
+        </div>
+    </div>
+
+    
+    {% endfor %}
+
+</div>
+
+{% else %}
+<div class="container mt-5">
+
+    <!-- TITLE -->
+    <h2 class="text-center mb-5" style="font-weight:700; color:#333;">
+        Order Details
+    </h2>
+
+    {% for order in order_items %}
+    <div class="order-card shadow">
+
+        <div class="row no-gutters">
+
+            <!-- IMAGE -->
+            <div class="col-md-4">
+                <div class="img-box">
+                    <img src="{{ order.product.image.url }}" alt="">
+                </div>
+            </div>
+
+            <!-- DETAILS -->
+            <div class="col-md-8 p-4">
+
+                <h4 class="product-title">
+                    {{ order.product.product_name }}
+                </h4>
+
+                <div class="divider"></div>
+                <p><strong>Description:</strong> {{ order.product.description }}</p>
+                <p><strong>Order ID:</strong> #{{ order.id }}</p>
+                <p><strong>Quantity:</strong> {{ order.quantity }}</p>
+
+                <p>
+                    <strong>Total Amount:</strong> 
+                    <span class="amount">₹{{ order.amount }}</span>
+                </p>
+<p><b>Payment Status:</b> {{ order.status }}</p>
+
+
+
+                        <a href="{% url 'track_delivery' order.id %}" class="btn btn-outline-custom"><i class="fa fa-truck"></i>Track Delivery</a>
+</div>
+                    </div>
+
+            </div>
+            
+        </div>
+    </div>
+
+    
+    {% endfor %}
+
+</div>
+{% endif %}
+{% endblock %}

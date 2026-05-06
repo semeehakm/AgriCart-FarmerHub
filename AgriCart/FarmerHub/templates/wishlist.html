@@ -1,0 +1,105 @@
+
+<!-- wishlist.html -->
+{% extends 'base.html' %}
+{% block content %}
+
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-info">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+
+    <!-- Start All Title Box -->
+    <div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Wishlist</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Shop</a></li>
+                        <li class="breadcrumb-item active">Wishlist</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End All Title Box -->
+
+    <!-- Start Wishlist  -->
+    <div class="wishlist-box-main">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="table-main table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Images</th>
+                                    <th>Product Name</th>
+                                    <th>Unit Price </th>
+                                    <th>Stock</th>
+                                    <th>Add Item</th>
+                                    <th>Remove</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if items %}
+                                {% for item in items %}
+                                <tr>
+                                    <td class="thumbnail-img">
+                                        <a href="#">
+									<img class="img-fluid" src="{{ item.product.image.url }}" alt="" />
+								</a>
+                                    </td>
+                                    <td class="name-pr">
+                                        <a href="#">
+									{{item.product.product_name}}
+								</a>
+                                    </td>
+                                    <td class="price-pr">
+                                        <p> ₹{{item.product.price}}</p>
+                                    </td>
+
+                                    
+                                    {% if item.product.quantity > 0 %}
+                                    <td class="quantity-box" style="color: green;">In Stock</td>
+                                    <td class="add-pr">
+                                        <a class="btn hvr-hover" href="{% url 'add_to_cart' item.product.id %}">Add to Cart</a>
+                                    </td>
+                                    {% else %}
+                                    <td class="quantity-box" style="color: red;">Out of Stock</td>
+                                    <td class="add-pr">
+                                        
+                                    </td>
+                                    {% endif %}
+                                    
+                                    <td class="remove-pr">
+                                        <a href="{% url 'remove_from_wishlist' item.id %}">
+									<i class="fas fa-times"></i>
+								</a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                <tr>
+                                  {% else %}
+                                    <tr>
+                                        <td colspan="6" class="text-center">
+                                            <strong>No products in your wishlist</strong>
+                                        </td>
+                                    </tr>
+                                {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Wishlist -->
+
+
+{% endblock %}

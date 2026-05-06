@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-danger text-center alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+<!-- Start All Title Box -->
+    <div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Seller Register</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{%url 'index' %}">Shop</a></li>
+                        <li class="breadcrumb-item active">Seller Register</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End All Title Box -->
+
+<div class="cart-box-main">
+    <div class="container">
+        <div class="row justify-content-center">
+            
+            <div class="col-lg-6 col-md-8 col-sm-10">
+                
+                <div class="title-left text-center">
+                    <h3>Seller Registration</h3>
+                </div>
+
+                <form action="{%url 'sell_reg' %}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+                    {% csrf_token %}
+
+                    {% if error %}
+                        <p style="color:red;">{{ error }}</p>
+                    {% endif %}
+
+                    <div class="form-row">
+
+                        <div class="col-md-12 mb-3">
+                            <label>Full Name *</label>
+                            <input type="text" name="name" class="form-control" placeholder="Enter your name" required>
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            <label>Email *</label>
+                            <input type="email" name="email" class="form-control" placeholder="Enter email" required>
+                        </div>
+
+
+                        <div class="col-md-12 mb-3">
+                            <label>Phone Number *</label>
+                            <input type="text" name="phone" class="form-control" placeholder="Enter phone number" required pattern="[6-9]{1}[0-9]{9}"  title="Enter valid 10-digit mobile number">
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            <label>Address *</label>
+                            <textarea name="address" class="form-control" placeholder="Enter address" required></textarea>
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            <label>Password *</label>
+                            <input type="password" name="password" class="form-control" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=]).{8,}$" title="Must contain: 1 uppercase, 1 lowercase, 1 number, 1 special character, min 8 characters">
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            <label>Confirm Password *</label>
+                            <input type="password" name="confirm_password" class="form-control" required>
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            <label for="image">Land-Tax</label>
+                        <input type="file" class="form-control" id="image" name="image" required>
+                        </div>
+
+
+    <!-- other fields -->
+
+    <div class="form-check mt-3">
+        <input class="form-check-input" type="checkbox" id="termsCheck" required>
+        
+        <label class="form-check-label" for="termsCheck">
+            I agree to 
+            <a href="{% url 'help' %}#terms" target="_blank">
+                Terms & Conditions
+            </a>
+        </label>
+
+        <!-- Error message -->
+        <div class="invalid-feedback">
+            You must accept the Terms & Conditions.
+        </div>
+    </div>
+
+    
+                    </div>
+
+                    <div class="text-center">
+                        <button class="btn btn-outline-custom" type="submit">
+                            Register as Seller
+                        </button>
+                    </div>
+
+                    <div class="text-center mt-3">
+                        <p>Are you a buyer? 
+                            <a href="{% url 'buy_reg' %}">Register here</a>
+                        </p>
+                    </div>
+
+                    <div class="text-center mt-3">
+                        <p>Already have an account? 
+                            <a href="{% url 'log_in' %}">Login here</a>
+                        </p>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+(() => {
+    'use strict';
+    const forms = document.querySelectorAll('.needs-validation');
+
+    Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+        }, false);
+    });
+})();
+</script>
+{% endblock %}

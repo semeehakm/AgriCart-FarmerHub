@@ -1,0 +1,345 @@
+{%extends 'base.html'%}
+{% load static %}
+    {%block content%}
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-warning">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+<style>
+.star-rating {
+    direction: rtl; /* so the first star is on the left */
+    display: inline-flex;
+}
+
+.star-rating input {
+    display: none; /* hide radio buttons */
+}
+
+.star-rating label {
+    font-size: 30px; /* big star size */
+    color: #ccc; /* unselected color */
+    cursor: pointer;
+}
+
+.star-rating input:checked ~ label {
+    color: gold;
+}
+
+/* Optional: hover effect */
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: gold;
+}
+</style>
+    <!-- Start All Title Box -->
+    <div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Product Detail</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">Shop</a></li>
+                        <li class="breadcrumb-item active">Product Detail </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End All Title Box -->
+
+    <!-- Start Shop Detail  -->
+    {%if request.user.is_authenticated%}
+    {% if request.user == product.seller.user %}
+    <div class="shop-detail-box-main">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-5 col-lg-5 col-md-6">
+                    <div id="carousel-example-1" class="single-product-slider carousel slide" data-ride="carousel">
+                        <div class="carousel-inner" role="listbox">
+                            <div class="carousel-item active"> <img class="d-block w-100" src="{{product.image.url}}" alt="First slide"> </div>
+                            
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-xl-7 col-lg-7 col-md-6">
+                    <div class="single-product-details">
+                        <h2>{{product.product_name}}</h2>
+                        <h5> ₹{{product.price}}</h5>
+                        <p class="available-stock"><span>  {{product.quantity}} in stock </span><p>
+						<h4>Description</h4>
+						<p>{{product.product_description}} </p>
+						<div class="price-box-bar">
+							<div class="cart-and-bay-btn">
+								<a class="btn hvr-hover" data-fancybox-close="" href="{% url 'edit' product.id %}">Edit Product</a>
+								<a class="btn hvr-hover" data-fancybox-close="" href="{% url 'delete' product.id %}">Delete</a>
+							</div>
+						</div>
+                    </div>
+                </div>
+            </div>
+			
+			<div class="container-fluid my-4">
+                <div class="row">
+
+                    <div class="col-12">
+                        <div class="card shadow-sm">
+
+                            <div class="card-header">
+                                <h2>Product Reviews</h2>
+                            </div>
+
+                            <div class="card-body">
+
+                                <!-- ✅ Reviews List -->
+                                {% for r in reviews %}
+                                    <div class="mb-3 border-bottom pb-2">
+                                        <strong>{{ r.buyer }}</strong><br>
+                                        <small class="text-muted">
+                                            {{ r.created_at|date:"d M Y" }}
+                                        </small><br>
+
+                                        <span class="text-warning">
+                                            {% for i in "12345"|slice:":r.rating" %}
+                                                ★
+                                            {% endfor %}
+                                        </span>
+
+                                        <p>{{ r.comment }}</p>
+                                    </div>
+                                {% empty %}
+                                    <p>No reviews yet</p>
+                                {% endfor %}
+
+                                <hr>
+                            </div>
+                        </div>
+				    </div>
+                    </div>
+                </div>
+			</div>
+            
+            <div class="row my-5">
+                <div class="col-lg-12">
+                    <div class="title-all text-center">
+                        <h1>Other Products</h1>
+                    </div>                    
+                    <div class="row special-list">
+                        {% for i in products %}
+                                <div class="col-lg-3 col-md-6  special-grid {{ i.category|lower }}">
+                                    <div class="products-single fix">
+                                        <div class="box-img-hover">
+                                            
+                                            <img src="{{ i.image.url }}" class="img-fluid" alt="Image">
+                                            <div class="mask-icon">
+                                                <ul>
+                                                     <li><a href="{%url 'view_pdt' i.id %}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                                    <li><a href="{%url 'edit' i.id %}" data-toggle="tooltip" data-placement="right" title="Update"><i class="fas fa-edit"></i></a></li>
+                                                    <li><a href="{%url 'delete' i.id %}" data-toggle="tooltip" data-placement="right" title="Delete"><i class="fas fa-trash"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        {% endfor %}
+                    </div>
+                    
+                </div>
+            </div>
+
+        </div>
+    </div>
+    {% else %}
+    <div class="shop-detail-box-main">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-5 col-lg-5 col-md-6">
+                    <div id="carousel-example-1" class="single-product-slider carousel slide" data-ride="carousel">
+                        <div class="carousel-inner" role="listbox">
+                            <div class="carousel-item active"> <img class="d-block w-100" src="{{product.image.url}}" alt="First slide"> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-7 col-lg-7 col-md-6">
+                    <div class="single-product-details">
+                        <h2>{{product.product_name}}</h2>
+                        <h5> <del>₹ {{ product.price|add:15 }}</del> ₹{{product.price}}</h5>
+                        <p class="available-stock"><span>  {{product.quantity}} available </span><p>
+						<h4>Description</h4>
+						<p>{{product.product_description}} </p>
+                        <form action="{%url 'add_to_cart' product.id %}" method="post">
+                            {% csrf_token %}
+						<ul>
+							<li>
+								<div class="form-group quantity-box">
+									<label class="control-label">Quantity</label>
+									<input class="form-control" name="quantity" value="1" min="1"  type="number">
+								</div>
+							</li>
+						</ul>
+
+						<div class="price-box-bar">
+							<div class="cart-and-bay-btn">
+								
+								<a class="btn hvr-hover" data-fancybox-close="" >
+                                    <button type="submit" style="border:none; background:none; color: white;"><strong>Add to cart</strong></button>
+                                </a>
+							</div>
+						</div>
+                        </form>
+						<div class="add-to-btn">
+							<div class="add-comp">
+								<a class="btn hvr-hover" href="#"><i class="fas fa-heart"></i> Add to wishlist</a>
+								
+							</div>
+							<div class="share-bar">
+								<a class="btn hvr-hover" href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank" ><i class="fab fa-facebook" aria-hidden="true"></i></a>
+								<a class="btn hvr-hover" href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}" target="_blank" ><i class="fab fa-twitter" aria-hidden="true"></i></a>
+								<a class="btn hvr-hover" href="https://pinterest.com/pin/create/button/?url={{ request.build_absolute_uri }}" target="_blank" ><i class="fab fa-pinterest-p" aria-hidden="true"></i></a>
+								<a class="btn hvr-hover" href="https://api.whatsapp.com/send?text={{ request.build_absolute_uri }}" target="_blank" ><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+							</div>
+						</div>
+                    </div>
+                </div>
+            </div>
+			
+			<div class="container-fluid my-4">
+                <div class="row">
+
+                    <div class="col-12">
+                        <div class="card shadow-sm">
+
+                            <div class="card-header">
+                                <h2>Product Reviews</h2>
+                            </div>
+
+                            <div class="card-body">
+
+                                <!-- ✅ Reviews List -->
+                                {% for r in reviews %}
+                                    <div class="mb-3 border-bottom pb-2">
+                                        <strong>{{ r.buyer }}</strong><br>
+                                        <small class="text-muted">
+                                            {{ r.created_at|date:"d M Y" }}
+                                        </small><br>
+
+                                        <span class="text-warning">
+                                            {% for i in "12345"|slice:":r.rating" %}
+                                                ★
+                                            {% endfor %}
+                                        </span>
+
+                                        <p>{{ r.comment }}</p>
+                                    </div>
+                                {% empty %}
+                                    <p>No reviews yet</p>
+                                {% endfor %}
+
+                                <hr>
+
+                                <!-- ✅ Review Form -->
+                                <h5>Add Review</h5>
+
+                                <form action="{% url 'view_pdt' product.id %}" method="POST">
+                                    {% csrf_token %}
+
+                                    <textarea name="comment" class="form-control mb-2"
+                                            placeholder="Write your review"></textarea>
+
+                                    <div class="star-rating">
+                                        <input type="radio" id="star5" name="rating" value="5">
+                                        <label for="star5">&#9733;</label>
+                                        
+                                        <input type="radio" id="star4" name="rating" value="4">
+                                        <label for="star4">&#9733;</label>
+                                        
+                                        <input type="radio" id="star3" name="rating" value="3">
+                                        <label for="star3">&#9733;</label>
+                                        
+                                        <input type="radio" id="star2" name="rating" value="2">
+                                        <label for="star2">&#9733;</label>
+                                        
+                                        <input type="radio" id="star1" name="rating" value="1">
+                                        <label for="star1">&#9733;</label>
+                                    </div>
+
+
+                                    <button type="submit" class="btn btn-dark">
+                                        Submit Review
+                                    </button>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            
+            <div class="row my-5">
+                <div class="col-lg-12">
+                    <div class="title-all text-center">
+                        <h1>Featured Products</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lacus enim.</p>
+                    </div>
+                    
+                    <div class="row special-list">
+                        {% for i in key2 %}
+                                <div class="col-lg-3 col-md-6  special-grid {{ i.category|lower }}">
+                                    <div class="products-single fix">
+                                        <div class="box-img-hover">
+                                            <div class="type-lb">
+                                                <p class="sale">Sale</p>
+                                            </div>
+                                            <img src="{{ i.image.url }}" class="img-fluid" alt="Image">
+                                            <div class="mask-icon">
+                                                <ul>
+                                                    <li><a href="{%url 'view_pdt' i.id %}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                                    
+                                                    <li>
+    <a href="{% url 'add_to_wishlist' product.id %}"
+       data-toggle="tooltip"
+       data-placement="right"
+       title="Add to Wishlist">
+
+        <i class="{% if product.id in wishlist_ids %}fas fa-heart text-danger{% else %}far fa-heart{% endif %}"></i>
+
+    </a>
+</li>
+                                                </ul>
+                                                <form method="post" action="{% url 'add_to_cart' i.id %}">
+                                                    {% csrf_token %}
+                                                    {% if i.quantity != 0 %}
+                                                    <input type="hidden" name="quantity" value="1" min="1">
+                                                    <a class="cart">
+                                                    <button type="submit" class="cart"  style="border:none; background:none; color: white;">
+                                                        <strong>Add to Cart</strong>
+                                                    </button>
+                                                    </a>
+                                                </form>
+                                                {% else %}
+                                                <a class="cart">
+                                                    <button type="submit" class="cart"  style="border:none; background:none; color: white;">
+                                                        <strong>Out of Stock</strong>
+                                                    </button>
+                                                    </a>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        {% endfor %}
+                    </div>
+                    
+                </div>
+            </div>
+
+        </div>
+    </div>
+    {% endif %}
+    {% endif %}
+    <!-- End Cart -->
+    {%endblock%}

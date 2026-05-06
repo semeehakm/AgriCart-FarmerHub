@@ -1,0 +1,255 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+   .main-title {
+    color: #b0b435;
+}
+
+.nav-custom .nav-link {
+    color: black;
+    font-weight: 600;
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+.nav-custom .nav-link:hover {
+    background-color: #b0b435;
+    color: white;
+}
+
+/* Cards */
+.info-card {
+    background: rgba(176, 180, 53, 0.1);
+    border-left: 5px solid #b0b435;
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Sitemap links */
+.sitemap-links a {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.sitemap-links a:hover {
+    color: #b0b435;
+    padding-left: 5px;
+}
+</style>
+
+<!-- Start All Title Box -->
+    <div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Help & Information</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{%url 'index' %}">Shop</a></li>
+                        <li class="breadcrumb-item active">Help & Information</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End All Title Box -->
+
+<div class="container mt-5">
+
+    <!-- Navigation -->
+    <ul class="nav justify-content-center mb-5 nav-custom">
+        <li class="nav-item"><a href="#service" class="nav-link">Customer Service</a></li>
+        <li class="nav-item"><a href="#sitemap" class="nav-link">Sitemap</a></li>
+        <li class="nav-item"><a href="#terms" class="nav-link">Terms & Conditions</a></li>
+        <li class="nav-item"><a href="#privacy" class="nav-link">Privacy Policy</a></li>
+        <li class="nav-item"><a href="#delivery" class="nav-link">Delivery Information</a></li>
+    </ul>
+
+    <!-- Customer Service -->
+    <section id="service" class="info-card">
+        <h4>Customer Service</h4>
+        <p>
+            We are here to help you at every step of your shopping journey. From placing orders 
+            to tracking deliveries, our support team ensures a smooth and reliable experience.
+        </p>
+        <ul>
+            <li>✔ 24/7 customer support assistance</li>
+        <li>✔ Easy order placement guidance</li>
+        <li>✔ Real-time order tracking support</li>
+        <li>✔ Quick and hassle-free return process</li>
+        <li>✔ Fast refund and cancellation service</li>
+        <li>✔ Secure payment assistance</li>
+        <li>✔ Help with product selection and queries</li>
+        <li>✔ Dedicated support for delivery issues</li>
+        <li>✔ Complaint resolution within minimal time</li>
+        <li>✔ Friendly and responsive support team</li>
+    </ul>
+
+    <p>
+        Our goal is to ensure a smooth, reliable, and satisfying shopping experience for every customer.
+    </p>
+    </section>
+
+    <!-- Sitemap -->
+    <section id="sitemap" class="info-card">
+        <h4>Our Sitemap</h4>
+        <div class="accordion-body">
+
+    <p>
+        Use the sitemap below to quickly navigate through all sections of AgriCart FarmerHub. 
+        It helps you find products, manage your account, and access important services بسهولة.
+    </p>
+
+    <ul class="sitemap-links">
+        <li>
+            <a href="{% url 'index' %}">
+                🏠 <strong>Home</strong> – Explore featured products, offers, and latest updates
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'gallery' %}">
+                🛒 <strong>Shop</strong> – Browse fresh vegetables, fruits, and farm products
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'wishlist_view' %}">
+                💖 <strong>Wishlist</strong> – Save and manage your favorite items
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'cart_view' %}">
+                🧺 <strong>Cart</strong> – Review and manage selected products before checkout
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'track_order' %}">
+                🚚 <strong>Track Delivery</strong> – Check real-time order status and delivery updates
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'contact_us' %}">
+                📞 <strong>Contact Us</strong> – Get in touch with our support team for assistance
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'about' %}">
+                ℹ️ <strong>About Us</strong> – Learn more about AgriCart FarmerHub
+            </a>
+        </li>
+    </ul>
+
+    <p class="mt-3">
+        Our goal is to make navigation simple, fast, and user-friendly so you can easily access everything you need.
+    </p>
+
+</div>
+    </section>
+
+    <!-- Terms -->
+    <section id="terms" class="info-card">
+        <h4>Terms & Conditions</h4>
+        <div class="accordion-body">
+
+    <p>
+        By accessing and using AgriCart FarmerHub, you agree to comply with the following terms and conditions. 
+        These guidelines ensure a safe, fair, and reliable experience for all users.
+    </p>
+
+    <ul>
+        <li>✔ Users must provide accurate and complete information while creating an account</li>
+        <li>✔ Account credentials must be kept confidential and secure</li>
+        <li>✔ All products are subject to availability and may change without notice</li>
+        <li>✔ Prices and offers may be updated or modified at any time</li>
+        <li>✔ Orders can be canceled by the platform in case of errors or suspicious activity</li>
+        <li>✔ Users must not misuse the platform for fraudulent or illegal activities</li>
+        <li>✔ Any attempt to harm or disrupt the platform is strictly prohibited</li>
+        <li>✔ Returns and refunds are subject to our return policy guidelines</li>
+        <li>✔ Delivery timelines are estimated and may vary based on location</li>
+        <li>✔ AgriCart reserves the right to update terms at any time without prior notice</li>
+    </ul>
+
+    <p class="mt-3">
+        By continuing to use our services, you acknowledge that you have read, understood, and agreed to these terms.
+    </p>
+
+</div>
+    </section>
+
+    <!-- Privacy -->
+    <section id="privacy" class="info-card">
+        <h4>Privacy Policy</h4>
+        <div class="accordion-body">
+
+    <p>
+        At AgriCart FarmerHub, your privacy is our top priority. We are committed to protecting your personal information 
+        and ensuring a safe and secure shopping experience.
+    </p>
+
+    <ul>
+        <li>✔ We collect basic information such as name, email, phone number, and address for order processing</li>
+        <li>✔ Your data is used only to improve our services and enhance your shopping experience</li>
+        <li>✔ We do not sell, trade, or share your personal information with third parties without your consent</li>
+        <li>✔ All transactions are secured using reliable and safe payment methods</li>
+        <li>✔ We use cookies to improve website functionality and user experience</li>
+        <li>✔ Your account information is protected with secure authentication systems</li>
+        <li>✔ You can update or delete your personal information at any time</li>
+        <li>✔ We may send updates or notifications related to your orders and services</li>
+        <li>✔ Unauthorized access or misuse of data is strictly prevented with security measures</li>
+        <li>✔ AgriCart reserves the right to update this policy when required</li>
+    </ul>
+
+    <p class="mt-3">
+        By using our platform, you agree to the collection and use of your information as described in this policy.
+    </p>
+
+</div>
+    </section>
+
+    <!-- Delivery -->
+    <section id="delivery" class="info-card">
+        <h4>Delivery Information</h4>
+        <div class="accordion-body">
+
+    <p>
+        AgriCart FarmerHub ensures fast, reliable, and safe delivery of fresh farm products directly to your doorstep. 
+        We are committed to maintaining quality and freshness in every order.
+    </p>
+
+    <ul>
+        <li>✔ Orders are processed quickly after confirmation</li>
+        <li>✔ Delivery timelines may vary based on your location</li>
+        <li>✔ Real-time tracking is available through the “Track Delivery” section</li>
+        <li>✔ Products are carefully packed to maintain freshness and quality</li>
+        <li>✔ We partner with trusted delivery services for safe transportation</li>
+        <li>✔ Delivery charges (if any) will be shown during checkout</li>
+        <li>✔ Same-day or next-day delivery available in selected areas</li>
+        <li>✔ Customers will be notified in case of delays or issues</li>
+        <li>✔ Ensure correct address and contact details for smooth delivery</li>
+        <li>✔ Contact support immediately for any delivery-related concerns</li>
+    </ul>
+
+    <p class="mt-3">
+        Our goal is to provide a seamless delivery experience so you receive fresh and quality products on time, every time.
+    </p>
+
+</div>
+    </section>
+
+</div>
+
+{% endblock %}
