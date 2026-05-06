@@ -1,149 +1,130 @@
-🌾 FarmersHub – Project Documentation
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FarmersHub - Project Documentation</title>
+</head>
 
-Developed by: Semeeha KM
+<body>
 
-📌 Project Overview
+    <h1>🌾 FarmersHub – Project Documentation</h1>
+    <p><strong>Developed by:</strong> Semeeha KM</p>
 
-FarmersHub is a full-stack web application developed using the Django framework. The system is designed to connect farmers, sellers, customers, and delivery personnel (cargo team) within a single digital platform.
+    <hr>
 
-The application streamlines the process of product listing, ordering, and delivery tracking while ensuring secure, role-based access for different types of users. It aims to reduce dependency on intermediaries and improve efficiency in agricultural product distribution.
+    <h2>📌 Project Overview</h2>
+    <p>
+        FarmersHub is a full-stack web application developed using the Django framework.
+        It connects farmers, sellers, customers, and cargo teams in a single platform.
+        The system enables product listing, ordering, and delivery tracking with secure role-based access.
+    </p>
 
-🎯 Objectives
+    <h2>🎯 Objectives</h2>
+    <ul>
+        <li>Provide a platform for farmers to sell products</li>
+        <li>Allow users to browse and purchase products</li>
+        <li>Implement a cargo-based delivery system</li>
+        <li>Ensure secure role-based access</li>
+        <li>Improve transparency in order tracking</li>
+    </ul>
 
-The primary objectives of the FarmersHub system are:
+    <h2>⚙️ Technologies Used</h2>
+    <ul>
+        <li>Frontend: HTML, CSS, JavaScript</li>
+        <li>Backend: Python (Django)</li>
+        <li>Database: SQLite</li>
+        <li>Version Control: Git & GitHub</li>
+    </ul>
 
-To provide farmers and sellers with a platform to showcase and sell their products
-To allow users to easily browse and purchase agricultural goods
-To implement a structured delivery system using a dedicated cargo team
-To ensure secure access through role-based authentication
-To improve transparency in order tracking and delivery
-⚙️ Technologies Used
+    <h2>👥 System Modules</h2>
 
-Frontend:
+    <h3>1. Admin Module</h3>
+    <ul>
+        <li>Manage users and roles</li>
+        <li>Approve or reject registrations</li>
+        <li>Monitor orders and activities</li>
+        <li>Activate cargo team accounts</li>
+    </ul>
 
-HTML
-CSS
-JavaScript
+    <h3>2. Farmer/Seller Module</h3>
+    <ul>
+        <li>Register and login</li>
+        <li>Add, edit, delete products</li>
+        <li>View customer orders</li>
+        <li>Manage inventory</li>
+    </ul>
 
-Backend:
+    <h3>3. User Module</h3>
+    <ul>
+        <li>Register and login</li>
+        <li>Browse products</li>
+        <li>Add to cart and place orders</li>
+        <li>Track order status</li>
+    </ul>
 
-Python
-Django Framework
+    <h2>🚚 Cargo Team Module (Dashboard)</h2>
 
-Database:
+    <h3>Access Control</h3>
+    <ul>
+        <li>Created and managed by Admin</li>
+        <li>Given staff access only</li>
+        <li>Limited permissions</li>
+    </ul>
 
-SQLite
+    <h3>Features</h3>
+    <ul>
+        <li>View assigned delivery orders</li>
+        <li>Update delivery status (Pending, Shipped, Out for Delivery, Delivered)</li>
+        <li>Real-time tracking updates for users</li>
+        <li>Simple and clean dashboard interface</li>
+    </ul>
 
-Other Tools:
+    <p><strong>Note:</strong> Cargo team can only update delivery status and cannot modify other data.</p>
 
-Git & GitHub for version control
-👥 System Modules
-🔹 1. Admin Module
+    <h2>🧩 Key Features</h2>
+    <ul>
+        <li>Role-based authentication</li>
+        <li>Product management system</li>
+        <li>Order and booking system</li>
+        <li>Delivery tracking</li>
+        <li>Search and filter functionality</li>
+        <li>Clean dashboard UI</li>
+    </ul>
 
-The Admin has full control over the system and is responsible for managing all operations.
+    <h2>🔄 System Workflow</h2>
+    <ol>
+        <li>User registers and logs in</li>
+        <li>User browses products</li>
+        <li>User places an order</li>
+        <li>Seller processes the order</li>
+        <li>Cargo team updates delivery status</li>
+        <li>User tracks order until delivery</li>
+    </ol>
 
-Key Responsibilities:
+    <h2>🚀 Future Enhancements</h2>
+    <ul>
+        <li>AI-based route optimization</li>
+        <li>Chatbot support</li>
+        <li>Online payment integration</li>
+        <li>Notification system</li>
+        <li>Mobile app support</li>
+    </ul>
 
-Manage user registrations (approve/reject farmers, sellers, cargo team)
-Monitor orders and bookings
-Assign roles and permissions
-Activate cargo team accounts (staff access)
-Maintain overall system integrity
-🔹 2. Farmer/Seller Module
+    <h2>📊 Project Highlights</h2>
+    <ul>
+        <li>Modular architecture</li>
+        <li>User-friendly interface</li>
+        <li>Secure system design</li>
+        <li>Real-world application</li>
+    </ul>
 
-Farmers or sellers can manage their products and view customer orders.
+    <h2>📞 Contact</h2>
+    <p>Email: semeehakm72@gmail.com</p>
+    <p>Phone: 9447259734</p>
 
-Features:
+    <hr>
 
-User registration and login
-Add, update, and delete products
-View order history
-Track product demand
-Manage inventory
-🔹 3. User (Customer) Module
+    <p>© 2026 Semeeha KM | FarmersHub Project</p>
 
-This module is designed for customers who purchase products.
-
-Features:
-
-User registration and login
-Browse available products
-Search and filter items
-Add products to cart
-Place orders
-Track order status
-🚚 4. Cargo Team Module (Dashboard Explanation)
-
-The Cargo Dashboard is a restricted-access module designed specifically for delivery personnel. Unlike other users, the cargo team has limited permissions, focusing only on delivery operations.
-
-🔐 Access Control
-Cargo team members are created by the Admin
-They are given staff access through the admin panel
-They do NOT have full admin rights
-Their dashboard is separate and role-specific
-📊 Cargo Dashboard Features
-1. 📦 View Assigned Orders
-Cargo members can view all orders assigned for delivery
-Orders include customer details, product details, and delivery address
-2. 🔄 Update Delivery Status
-
-This is the core functionality of the cargo team.
-
-They can update order status such as:
-
-Pending
-Shipped
-Out for Delivery
-Delivered
-
-👉 Important:
-
-Cargo team can ONLY update status
-They cannot modify product, user, or payment details
-3. 📍 Delivery Tracking
-Each status update reflects in the user’s dashboard
-Ensures real-time tracking of orders
-Improves transparency between users and delivery system
-4. 📋 Simplified Interface
-Clean and minimal dashboard UI
-Focused only on delivery-related actions
-Avoids unnecessary complexity
-5. 🔄 Real-Time / Smooth Updates
-The system can include auto-refresh or smooth reload functionality
-Ensures cargo team sees updated orders without manual refresh
-🧩 Key Features of the System
-Role-based authentication system
-Secure login and access control
-Dynamic product management
-Order and booking system
-Dedicated cargo delivery module
-Search and filtering functionality
-Clean dashboard UI for all roles
-Real-time status updates
-🔄 System Workflow
-User registers and logs into the system
-User browses and selects products
-User places an order
-Seller receives and processes the order
-Cargo team is assigned for delivery
-Cargo team updates delivery status
-User tracks order until successful delivery
-🚀 Future Enhancements
-AI-based route optimization for delivery
-Chatbot support for user assistance
-Online payment gateway integration
-Notification system (SMS/Email alerts)
-Advanced analytics dashboard
-Mobile application support
-📊 Project Highlights
-Modular and scalable architecture
-Clean and user-friendly interface
-Efficient database handling using Django ORM
-Secure role-based system design
-Real-world applicable solution for agricultural commerce
-📞 Contact
-
-Name: Semeeha KM
-Email: semeehakm72@gmail.com
-
-Phone: 9447259734
+</body>
+</html>
