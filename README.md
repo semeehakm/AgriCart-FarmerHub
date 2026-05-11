@@ -26,10 +26,7 @@ with secure role-based access.
 - Django Framework
 
 ## Database
-- SQLite
-
-## Version Control
-- Git and GitHub
+- MYSQL
 
 # 👥 System Modules
 
